@@ -1,0 +1,46 @@
+{
+  "repository": {
+    "keyword": {
+      "patterns": [
+        {
+          "match": "=>",
+          "name": "punctuation.separator.key-value"
+        },
+        {
+          "match": "->",
+          "name": "support.function.kernel.lambda.ruby"
+        },
+        {
+          "match": "<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|-=|\\^=|\\|{1,2}=|<<",
+          "name": "keyword.operator.assignment.augmented.ruby"
+        },
+        {
+          "match": "<=>|<(?!<|=)|>(?!<|=|>)|<=|>=|===|==|=~|!=|!~|(?<=[ \\t])\\?",
+          "name": "keyword.operator.comparison.ruby"
+        },
+        {
+          "match": "(?<!\\.)\\b(and|not|or)\\b(?![?!])",
+          "name": "keyword.operator.logical.ruby"
+        },
+        {
+          "comment": "Make sure this goes after assignment and comparison",
+          "match": "(?<=^|[ \\t])!|&&|\\|\\||\\^",
+          "name": "keyword.operator.logical.ruby"
+        },
+        {
+          "match": "(%|&|\\*\\*|\\*|\\+|-|/)",
+          "name": "keyword.operator.arithmetic.ruby"
+        },
+        {
+          "match": "=",
+          "name": "keyword.operator.assignment.ruby"
+        },
+        {
+          "match": "\\||~|>>",
+          "name": "keyword.operator.other.ruby"
+        },
+
+      ]
+    }
+  }
+}

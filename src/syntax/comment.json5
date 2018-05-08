@@ -1,0 +1,18 @@
+{
+  "repository": {
+    "comment": {
+      "patterns": [
+				{
+					"begin": "#",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.ruby"
+						}
+					},
+					"end": "\\n",
+					"name": "comment.line.number-sign.ruby"
+				}
+      ]
+    }
+  }
+}

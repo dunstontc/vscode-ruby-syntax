@@ -1,0 +1,216 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Ruby",
+    "scopeName": "source.ruby",
+    "patterns": [
+        {
+            "include": "#comment"
+        },
+        {
+            "include": "#constant"
+        },
+        {
+            "include": "#entity"
+        },
+        {
+            "include": "#keyword"
+        },
+        {
+            "include": "#meta"
+        },
+        {
+            "include": "#operator"
+        },
+        {
+            "include": "#punctuation"
+        },
+        {
+            "include": "#storage"
+        },
+        {
+            "include": "#string"
+        },
+        {
+            "include": "#support"
+        },
+        {
+            "include": "#type"
+        },
+        {
+            "include": "#variable"
+        }
+    ],
+    "repository": {
+        "comment": {
+            "patterns": [
+                {
+                    "begin": "#",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.ruby"
+                        }
+                    },
+                    "end": "\\n",
+                    "name": "comment.line.number-sign.ruby"
+                }
+            ]
+        },
+        "constant": {
+            "patterns": []
+        },
+        "entity": {
+            "patterns": []
+        },
+        "keyword": {
+            "patterns": [
+                {
+                    "match": "=>",
+                    "name": "punctuation.separator.key-value"
+                },
+                {
+                    "match": "->",
+                    "name": "support.function.kernel.lambda.ruby"
+                },
+                {
+                    "match": "<<=|%=|&{1,2}=|\\*=|\\*\\*=|\\+=|-=|\\^=|\\|{1,2}=|<<",
+                    "name": "keyword.operator.assignment.augmented.ruby"
+                },
+                {
+                    "match": "<=>|<(?!<|=)|>(?!<|=|>)|<=|>=|===|==|=~|!=|!~|(?<=[ \\t])\\?",
+                    "name": "keyword.operator.comparison.ruby"
+                },
+                {
+                    "match": "(?<!\\.)\\b(and|not|or)\\b(?![?!])",
+                    "name": "keyword.operator.logical.ruby"
+                },
+                {
+                    "comment": "Make sure this goes after assignment and comparison",
+                    "match": "(?<=^|[ \\t])!|&&|\\|\\||\\^",
+                    "name": "keyword.operator.logical.ruby"
+                },
+                {
+                    "match": "(%|&|\\*\\*|\\*|\\+|-|/)",
+                    "name": "keyword.operator.arithmetic.ruby"
+                },
+                {
+                    "match": "=",
+                    "name": "keyword.operator.assignment.ruby"
+                },
+                {
+                    "match": "\\||~|>>",
+                    "name": "keyword.operator.other.ruby"
+                }
+            ]
+        },
+        "meta": {
+            "patterns": []
+        },
+        "operator": {
+            "patterns": []
+        },
+        "punctuation": {
+            "patterns": [
+                {
+                    "match": ";",
+                    "name": "punctuation.separator.statement.ruby"
+                },
+                {
+                    "match": ",",
+                    "name": "punctuation.separator.object.ruby"
+                }
+            ]
+        },
+        "storage": {
+            "patterns": []
+        },
+        "string": {
+            "patterns": [
+                {
+                    "name": "constant.character.escape.ruby",
+                    "match": "\\\\(x[0-9A-Fa-f]{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)"
+                },
+                {
+                    "name": "string.quoted.double.ruby",
+                    "begin": "\"",
+                    "end": "\"|$",
+                    "patterns": []
+                },
+                {
+                    "name": "string.quoted.single.ruby",
+                    "begin": "'",
+                    "end": "'|$",
+                    "patterns": []
+                }
+            ]
+        },
+        "support": {
+            "patterns": [
+                {
+                    "match": "\\b(abort|at_exit|autoload[?]?|binding|callcc|caller|caller_locations|chomp|chop|eval|exec|exit|exit!|fork|format|gets|global_variables|gsub|lambda|load|local_variables|open|p|print|printf|proc|putc|puts|rand|readline|readlines|select|set_trace_func|sleep|spawn|sprintf|srand|sub|syscall|system|test|trace_var|trap|untrace_var|warn)(\\b|(?<=[?!]))(?![?!])",
+                    "name": "support.function.kernel.ruby"
+                }
+            ]
+        },
+        "type": {
+            "patterns": [
+                {
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.class.ruby"
+                        },
+                        "2": {
+                            "name": "entity.name.type.class.ruby"
+                        },
+                        "3": {
+                            "name": "keyword.operator.other.ruby"
+                        },
+                        "4": {
+                            "name": "entity.other.inherited-class.ruby"
+                        },
+                        "5": {
+                            "name": "keyword.operator.other.ruby"
+                        },
+                        "6": {
+                            "name": "variable.other.object.ruby"
+                        }
+                    },
+                    "match": "^\\s*(class)\\s+(?:([.a-zA-Z0-9_:]+)(?:\\s*(<)\\s*([.a-zA-Z0-9_:]+))?|(<<)\\s*([.a-zA-Z0-9_:]+))",
+                    "name": "meta.class.ruby"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.module.ruby"
+                        },
+                        "2": {
+                            "name": "entity.name.type.module.ruby"
+                        },
+                        "3": {
+                            "name": "entity.other.inherited-class.module.first.ruby"
+                        },
+                        "4": {
+                            "name": "punctuation.separator.inheritance.ruby"
+                        },
+                        "5": {
+                            "name": "entity.other.inherited-class.module.second.ruby"
+                        },
+                        "6": {
+                            "name": "punctuation.separator.inheritance.ruby"
+                        },
+                        "7": {
+                            "name": "entity.other.inherited-class.module.third.ruby"
+                        },
+                        "8": {
+                            "name": "punctuation.separator.inheritance.ruby"
+                        }
+                    },
+                    "match": "^\\s*(module)\\s+(([A-Z]\\w*(::))?([A-Z]\\w*(::))?([A-Z]\\w*(::))*[A-Z]\\w*)",
+                    "name": "meta.module.ruby"
+                }
+            ]
+        },
+        "variable": {
+            "patterns": []
+        }
+    }
+}

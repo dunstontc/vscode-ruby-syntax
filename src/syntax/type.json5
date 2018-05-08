@@ -1,0 +1,62 @@
+{
+  "repository": {
+    "type": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "name": "keyword.control.class.ruby"
+            },
+            "2": {
+              "name": "entity.name.type.class.ruby"
+            },
+            "3": {
+              "name": "keyword.operator.other.ruby"
+            },
+            "4": {
+              "name": "entity.other.inherited-class.ruby"
+            },
+            "5": {
+              "name": "keyword.operator.other.ruby"
+            },
+            "6": {
+              "name": "variable.other.object.ruby"
+            }
+          },
+          "match": "^\\s*(class)\\s+(?:([.a-zA-Z0-9_:]+)(?:\\s*(<)\\s*([.a-zA-Z0-9_:]+))?|(<<)\\s*([.a-zA-Z0-9_:]+))",
+          "name": "meta.class.ruby"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "keyword.control.module.ruby"
+            },
+            "2": {
+              "name": "entity.name.type.module.ruby"
+            },
+            "3": {
+              "name": "entity.other.inherited-class.module.first.ruby"
+            },
+            "4": {
+              "name": "punctuation.separator.inheritance.ruby"
+            },
+            "5": {
+              "name": "entity.other.inherited-class.module.second.ruby"
+            },
+            "6": {
+              "name": "punctuation.separator.inheritance.ruby"
+            },
+            "7": {
+              "name": "entity.other.inherited-class.module.third.ruby"
+            },
+            "8": {
+              "name": "punctuation.separator.inheritance.ruby"
+            }
+          },
+          "match": "^\\s*(module)\\s+(([A-Z]\\w*(::))?([A-Z]\\w*(::))?([A-Z]\\w*(::))*[A-Z]\\w*)",
+          "name": "meta.module.ruby"
+        },
+      ]
+    }
+  }
+}

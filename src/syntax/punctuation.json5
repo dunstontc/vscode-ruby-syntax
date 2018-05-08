@@ -1,0 +1,16 @@
+{
+  "repository": {
+    "punctuation": {
+      "patterns": [
+        {
+          "match": ";",
+          "name": "punctuation.separator.statement.ruby"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.object.ruby"
+        },
+      ]
+    }
+  }
+}
