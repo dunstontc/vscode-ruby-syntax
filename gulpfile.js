@@ -17,5 +17,5 @@ gulp.task('compile-json', () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch('./src/**/*.json5', [ 'compile-json' ]);
+  gulp.watch('./src/syntax/**/*.json5', [ 'compile-json' ]);
 });
