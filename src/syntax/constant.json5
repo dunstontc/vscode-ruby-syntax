@@ -1,7 +1,17 @@
 {
   "repository": {
     "constant": {
-      "patterns": []
+      "patterns": [
+        {
+          "match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
+          "name": "constant.character.escape.ruby"
+        },
+        {
+          "comment": "\n\t\t\tmatches questionmark-letters. texamples (1st alternation = hex): ?\\x1     ?\\x61n examples (2nd alternation = octal):\\0      ?\\07     ?\\017          examples (3rd alternation = escaped):        ?\\n      ?\\b          examples (4th alternation = meta-ctrl):        ?\\C-a    ?\\M-a    ?\\C-\\M-\\C-\\M-a          examples (4th alternation = normal):        ?a       ?A       ?0         ?*       ?\"       ?(         ?.       ?#                       the negative lookbehind prevents against matching       tp(42.tainted?)",
+          "match": "(?<!\\w)\\?(\\\\(x\\h{1,2}(?!\\h)\\b|0[0-7]{0,2}(?![0-7])\\b|[^x0MC])|(\\\\[MC]-)+\\w|[^\\s\\\\])",
+          "name": "constant.numeric.ruby"
+        },
+      ]
     }
   }
 }

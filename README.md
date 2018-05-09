@@ -6,6 +6,18 @@
 - [ruby-lang.com](https://www.ruby-lang.org/en/)
 - [textmate/ruby.tmbundle](https://github.com/textmate/ruby.tmbundle/blob/master/Syntaxes/Ruby.plist)
 - [vscode/ruby.tmLanguage](https://github.com/Microsoft/vscode/blob/master/extensions/ruby/syntaxes/ruby.tmLanguage.json)
+- Also:
+  - http://teohm.com/blog/start-using-ruby-percent-notation/
+  - https://simpleror.wordpress.com/2009/03/15/q-q-w-w-x-r-s/
+  - https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Literals
+  - https://apidock.com/ruby/String/%25
+  - https://apidock.com/ruby/Kernel/sprintf
+  - http://ruby-doc.org/core-2.0.0/Kernel.html#method-i-sprintf
+
+
+## Differences from the builtin syntax support
+- Autoatically highlights:
+  - Vagrantfile
 
 ## [License](https://github.com/dunstontc/vscode-ruby-syntax/blob/master/LICENSE)
 

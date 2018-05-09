@@ -1,0 +1,13 @@
+{
+  "repository": {
+    "invalid": {
+      "patterns": [
+        {
+          "comment": "else if is a common mistake carried over from other languages. it works if you put in a second end, but it’s never what you want.",
+          "match": "(?<!\\.)\\belse(\\s)+if\\b",
+          "name": "invalid.deprecated.ruby"
+        },
+      ]
+    }
+  }
+}

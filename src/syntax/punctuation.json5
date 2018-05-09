@@ -10,6 +10,11 @@
           "match": ",",
           "name": "punctuation.separator.object.ruby"
         },
+        {
+          "comment": "Scope Resolution Operator",
+          "match": "::",
+          "name": "punctuation.separator.scope.ruby"
+        },
       ]
     }
   }
