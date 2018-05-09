@@ -1,0 +1,68 @@
+{
+  "repository": {
+    "angles": {
+      "patterns": [
+        {
+          "include": "#regex_sub"
+        },
+        {
+          "begin": "<",
+          "end": ">",
+          "patterns": [
+            {
+              "include": "#angles"
+            }
+          ]
+        }
+      ]
+    },
+    "braces": {
+      "patterns": [
+        {
+          "include": "#regex_sub"
+        },
+        {
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [
+            {
+              "include": "#braces"
+            }
+          ]
+        }
+      ]
+    },
+    "brackets": {
+      "patterns": [
+        {
+          "include": "#regex_sub"
+        },
+        {
+          "begin": "\\[",
+          "end": "\\]",
+          "patterns": [
+            {
+              "include": "#brackets"
+            }
+          ]
+        }
+      ]
+    },
+    "parens": {
+      "patterns": [
+        {
+          "include": "#regex_sub"
+        },
+        {
+          "begin": "\\(",
+          "end": "\\)",
+          "patterns": [
+            {
+              "include": "#parens"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

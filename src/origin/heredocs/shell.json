@@ -1,0 +1,38 @@
+{
+  "begin": "(?=(?><<[-~](\"?)((?:[_\\w]+_|)(?:SH|SHELL))\\b\\1))",
+  "comment": "Heredoc with embedded shell",
+  "end": "(?!\\G)",
+  "name": "meta.embedded.block.shell",
+  "patterns": [
+    {
+      "begin": "(?><<[-~](\"?)((?:[_\\w]+_|)(?:SH|SHELL))\\b\\1)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.ruby"
+        }
+      },
+      "contentName": "source.shell",
+      "end": "\\s*\\2$\\n?",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.ruby"
+        }
+      },
+      "name": "string.unquoted.heredoc.ruby",
+      "patterns": [
+        {
+          "include": "#heredoc"
+        },
+        {
+          "include": "#interpolated_ruby"
+        },
+        {
+          "include": "source.shell"
+        },
+        {
+          "include": "#escaped_char"
+        }
+      ]
+    }
+  ]
+}

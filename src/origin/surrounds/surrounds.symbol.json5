@@ -1,0 +1,141 @@
+{
+  "repository": {
+    "angles": {
+      "patterns": [
+        {
+          "captures": {
+            "0": {
+              "name": "constant.character.escape.ruby"
+            }
+          },
+          "match": "\\\\<|\\\\>",
+          "name": "constant.other.symbol.ruby"
+        },
+        {
+          "begin": "<",
+          "captures": {
+            "0": {
+              "name": "constant.other.symbol.ruby"
+            }
+          },
+          "end": ">",
+          "patterns": [
+            {
+              "include": "#angles"
+            },
+            {
+              "include": "#symbol"
+            }
+          ]
+        }
+      ]
+    },
+    "braces": {
+      "patterns": [
+        {
+          "captures": {
+            "0": {
+              "name": "constant.character.escape.ruby"
+            }
+          },
+          "match": "\\\\\\{|\\\\\\}",
+          "name": "constant.other.symbol.ruby"
+        },
+        {
+          "begin": "\\{",
+          "captures": {
+            "0": {
+              "name": "constant.other.symbol.ruby"
+            }
+          },
+          "end": "\\}",
+          "patterns": [
+            {
+              "include": "#braces"
+            },
+            {
+              "include": "#symbol"
+            }
+          ]
+        }
+      ]
+    },
+    "brackets": {
+      "patterns": [
+        {
+          "captures": {
+            "0": {
+              "name": "constant.character.escape.ruby"
+            }
+          },
+          "match": "\\\\\\[|\\\\\\]",
+          "name": "constant.other.symbol.ruby"
+        },
+        {
+          "begin": "\\[",
+          "captures": {
+            "0": {
+              "name": "constant.other.symbol.ruby"
+            }
+          },
+          "end": "\\]",
+          "patterns": [
+            {
+              "include": "#brackets"
+            },
+            {
+              "include": "#symbol"
+            }
+          ]
+        }
+      ]
+    },
+    "parens": {
+      "patterns": [
+        {
+          "captures": {
+            "0": {
+              "name": "constant.character.escape.ruby"
+            }
+          },
+          "match": "\\\\\\(|\\\\\\)",
+          "name": "constant.other.symbol.ruby"
+        },
+        {
+          "begin": "\\(",
+          "captures": {
+            "0": {
+              "name": "constant.other.symbol.ruby"
+            }
+          },
+          "end": "\\)",
+          "patterns": [
+            {
+              "include": "#parens"
+            },
+            {
+              "include": "#symbol"
+            }
+          ]
+        }
+      ]
+    },
+    "symbol": {
+      "patterns": [
+        {
+          "captures": {
+            "0": {
+              "name": "constant.character.escape.ruby"
+            }
+          },
+          "match": "\\\\\\\\|\\\\[ ]",
+          "name": "constant.other.symbol.ruby"
+        },
+        {
+          "match": "\\S\\w*",
+          "name": "constant.other.symbol.ruby"
+        }
+      ]
+    }
+  }
+}

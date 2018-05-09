@@ -1,0 +1,109 @@
+{
+  "repository": {
+    "angles": {
+      "patterns": [
+        {
+          "begin": "<",
+          "captures": {
+            "0": {
+              "name": "constant.other.symbol.ruby"
+            }
+          },
+          "end": ">",
+          "patterns": [
+            {
+              "include": "#angles"
+            },
+            {
+              "include": "#symbol"
+            }
+          ]
+        }
+      ]
+    },
+    "braces": {
+      "patterns": [
+        {
+          "begin": "\\{",
+          "captures": {
+            "0": {
+              "name": "constant.other.symbol.ruby"
+            }
+          },
+          "end": "\\}",
+          "patterns": [
+            {
+              "include": "#braces"
+            },
+            {
+              "include": "#symbol"
+            }
+          ]
+        }
+      ]
+    },
+    "brackets": {
+      "patterns": [
+        {
+          "begin": "\\[",
+          "captures": {
+            "0": {
+              "name": "constant.other.symbol.ruby"
+            }
+          },
+          "end": "\\]",
+          "patterns": [
+            {
+              "include": "#brackets"
+            },
+            {
+              "include": "#symbol"
+            }
+          ]
+        }
+      ]
+    },
+    "parens": {
+      "patterns": [
+        {
+          "begin": "\\(",
+          "captures": {
+            "0": {
+              "name": "constant.other.symbol.ruby"
+            }
+          },
+          "end": "\\)",
+          "patterns": [
+            {
+              "include": "#parens"
+            },
+            {
+              "include": "#symbol"
+            }
+          ]
+        }
+      ]
+    },
+    "symbol": {
+      "patterns": [
+        {
+          "begin": "(?=\\\\|#\\{)",
+          "end": "(?!\\G)",
+          "name": "constant.other.symbol.ruby",
+          "patterns": [
+            {
+              "include": "#escaped_char"
+            },
+            {
+              "include": "#interpolated_ruby"
+            }
+          ]
+        },
+        {
+          "match": "\\S\\w*",
+          "name": "constant.other.symbol.ruby"
+        }
+      ]
+    }
+  }
+}

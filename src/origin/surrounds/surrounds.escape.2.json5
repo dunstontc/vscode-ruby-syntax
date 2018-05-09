@@ -1,0 +1,72 @@
+{
+  "repository": {
+    "angles": {
+      "patterns": [
+        {
+          "match": "\\\\<|\\\\>|\\\\\\\\",
+          "name": "constant.character.escape.ruby"
+        },
+        {
+          "begin": "<",
+          "end": ">",
+          "patterns": [
+            {
+              "include": "#angles"
+            }
+          ]
+        }
+      ]
+    },
+    "braces": {
+      "patterns": [
+        {
+          "match": "\\\\\\{|\\\\\\}|\\\\\\\\",
+          "name": "constant.character.escape.ruby"
+        },
+        {
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [
+            {
+              "include": "#braces"
+            }
+          ]
+        }
+      ]
+    },
+    "brackets": {
+      "patterns": [
+        {
+          "match": "\\\\\\[|\\\\\\]|\\\\\\\\",
+          "name": "constant.character.escape.ruby"
+        },
+        {
+          "begin": "\\[",
+          "end": "\\]",
+          "patterns": [
+            {
+              "include": "#brackets"
+            }
+          ]
+        }
+      ]
+    },
+    "parens": {
+      "patterns": [
+        {
+          "match": "\\\\\\(|\\\\\\)|\\\\\\\\",
+          "name": "constant.character.escape.ruby"
+        },
+        {
+          "begin": "\\(",
+          "end": "\\)",
+          "patterns": [
+            {
+              "include": "#parens"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

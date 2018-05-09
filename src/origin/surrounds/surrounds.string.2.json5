@@ -1,0 +1,109 @@
+{
+  "repository": {
+    "angles": {
+      "patterns": [
+        {
+          "begin": "<",
+          "captures": {
+            "0": {
+              "name": "string.other.ruby"
+            }
+          },
+          "end": ">",
+          "patterns": [
+            {
+              "include": "#angles"
+            },
+            {
+              "include": "#string"
+            }
+          ]
+        }
+      ]
+    },
+    "braces": {
+      "patterns": [
+        {
+          "begin": "\\{",
+          "captures": {
+            "0": {
+              "name": "string.other.ruby"
+            }
+          },
+          "end": "\\}",
+          "patterns": [
+            {
+              "include": "#braces"
+            },
+            {
+              "include": "#string"
+            }
+          ]
+        }
+      ]
+    },
+    "brackets": {
+      "patterns": [
+        {
+          "begin": "\\[",
+          "captures": {
+            "0": {
+              "name": "string.other.ruby"
+            }
+          },
+          "end": "\\]",
+          "patterns": [
+            {
+              "include": "#brackets"
+            },
+            {
+              "include": "#string"
+            }
+          ]
+        }
+      ]
+    },
+    "parens": {
+      "patterns": [
+        {
+          "begin": "\\(",
+          "captures": {
+            "0": {
+              "name": "string.other.ruby"
+            }
+          },
+          "end": "\\)",
+          "patterns": [
+            {
+              "include": "#parens"
+            },
+            {
+              "include": "#string"
+            }
+          ]
+        }
+      ]
+    },
+    "string": {
+      "patterns": [
+        {
+          "begin": "(?=\\\\|#\\{)",
+          "end": "(?!\\G)",
+          "name": "string.other.ruby",
+          "patterns": [
+            {
+              "include": "#escaped_char"
+            },
+            {
+              "include": "#interpolated_ruby"
+            }
+          ]
+        },
+        {
+          "match": "\\S\\w*",
+          "name": "string.other.ruby"
+        }
+      ]
+    }
+  }
+}

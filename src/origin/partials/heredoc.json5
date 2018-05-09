@@ -1,0 +1,13 @@
+{
+  "repository": {
+    "heredoc": {
+			"begin": "^<<[-~]?\\w+",
+			"end": "$",
+			"patterns": [
+				{
+					"include": "$self"
+				}
+			]
+		},
+  }
+}

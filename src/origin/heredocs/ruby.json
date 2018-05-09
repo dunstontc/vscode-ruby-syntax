@@ -1,0 +1,38 @@
+{
+  "begin": "(?=(?><<[-~](\"?)((?:[_\\w]+_|)RUBY)\\b\\1))",
+  "comment": "Heredoc with embedded ruby",
+  "end": "(?!\\G)",
+  "name": "meta.embedded.block.ruby",
+  "patterns": [
+    {
+      "begin": "(?><<[-~](\"?)((?:[_\\w]+_|)RUBY)\\b\\1)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.ruby"
+        }
+      },
+      "contentName": "source.ruby",
+      "end": "\\s*\\2$\\n?",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.ruby"
+        }
+      },
+      "name": "string.unquoted.heredoc.ruby",
+      "patterns": [
+        {
+          "include": "#heredoc"
+        },
+        {
+          "include": "#interpolated_ruby"
+        },
+        {
+          "include": "source.ruby"
+        },
+        {
+          "include": "#escaped_char"
+        }
+      ]
+    }
+  ]
+}

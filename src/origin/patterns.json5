@@ -1,0 +1,645 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Ruby",
+  "scopeName": "source.ruby",
+  "patterns": [
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.constant.ruby"
+        }
+      },
+      "comment": "symbols as hash key (1.9 syntax)",
+      "match": "(?>[a-zA-Z_]\\w*(?>[?!])?)(:)(?!:)",
+      "name": "constant.other.symbol.hashkey.ruby"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.constant.ruby"
+        }
+      },
+      "comment": "symbols as hash key (1.8 syntax)",
+      "match": "(?<!:)(:)(?>[a-zA-Z_]\\w*(?>[?!])?)(?=\\s*=>)",
+      "name": "constant.other.symbol.hashkey.ruby"
+    },
+    {
+      "comment": "everything being a reserved word, not a value and needing a 'end' is a..",
+      "match": "(?<!\\.)\\b(BEGIN|begin|case|class|else|elsif|END|end|ensure|for|if|in|module|rescue|then|unless|until|when|while)\\b(?![?!])",
+      "name": "keyword.control.ruby"
+    },
+    {
+      "comment": "contextual smart pair support for block parameters",
+      "match": "(?<!\\.)\\bdo\\b",
+      "name": "keyword.control.start-block.ruby"
+    },
+    {
+      "comment": "contextual smart pair support",
+      "match": "(?<=\\{)(\\s+)",
+      "name": "meta.syntax.ruby.start-block"
+    },
+    {
+      "match": "(?<!\\.)\\b(alias|alias_method|block_given[?]|break|defined[?]|iterator[?]|next|redo|retry|return|super|undef|yield)(\\b|(?<=[?]))(?![?!])",
+      "name": "keyword.control.pseudo-method.ruby"
+    },
+    {
+      "match": "\\b(nil|true|false)\\b(?![?!])",
+      "name": "constant.language.ruby"
+    },
+    {
+      "match": "\\b(__(FILE|LINE)__)\\b(?![?!])",
+      "name": "variable.language.ruby"
+    },
+    {
+      "match": "\\b(self)\\b(?![?!])",
+      "name": "variable.language.self.ruby"
+    },
+    {
+      "comment": " everything being a method but having a special function is a..",
+      "match": "\\b(initialize|new|loop|include|extend|prepend|fail|raise|attr_reader|attr_writer|attr_accessor|attr|catch|throw|private|private_class_method|module_function|public|public_class_method|protected|refine|using)\\b(?![?!])",
+      "name": "keyword.other.special-method.ruby"
+    },
+    {
+      "begin": "\\b(?<!\\.|::)(require|require_relative)\\b",
+      "captures": {
+        "1": {
+          "name": "keyword.other.special-method.ruby"
+        }
+      },
+      "end": "$|(?=#|\\})",
+      "name": "meta.require.ruby",
+      "patterns": [
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.variable.ruby"
+        }
+      },
+      "match": "(@)[a-zA-Z_]\\w*",
+      "name": "variable.other.readwrite.instance.ruby"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.variable.ruby"
+        }
+      },
+      "match": "(@@)[a-zA-Z_]\\w*",
+      "name": "variable.other.readwrite.class.ruby"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.variable.ruby"
+        }
+      },
+      "match": "(\\$)[a-zA-Z_]\\w*",
+      "name": "variable.other.readwrite.global.ruby"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.variable.ruby"
+        }
+      },
+      "match": "(\\$)(!|@|&|`|'|\\+|\\d+|~|=|/|\\\\|,|;|\\.|<|>|_|\\*|\\$|\\?|:|\"|-[0adFiIlpvw])",
+      "name": "variable.other.readwrite.global.pre-defined.ruby"
+    },
+    {
+      "begin": "\\b(ENV)\\[",
+      "beginCaptures": {
+        "1": {
+          "name": "variable.other.constant.ruby"
+        }
+      },
+      "end": "\\]",
+      "name": "meta.environment-variable.ruby",
+      "patterns": [
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    {
+      "match": "\\b[A-Z]\\w*(?=((\\.|::)[A-Za-z]|\\[))",
+      "name": "support.class.ruby"
+    },
+    {
+      "match": "\\b[_A-Z]\\w*\\b",
+      "name": "variable.other.constant.ruby"
+    },
+    {
+      "begin": "(?x)\n\t\t\t         (?=def\\b)                                                      # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\s+                                              # the def keyword\n\t\t\t         ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                   # a method name prefix\n\t\t\t           (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                              # the method name\n\t\t\t           |===?|!=|!~|>[>=]?|<=>|<[<=]?|[%&`/\\|^]|\\*\\*?|=?~|[-+]@?|\\[\\]=?) )  # …or an operator method\n\t\t\t         \\s*(\\()                                                        # the openning parenthesis for arguments\n\t\t\t        ",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.def.ruby"
+        },
+        "2": {
+          "name": "entity.name.function.ruby"
+        },
+        "3": {
+          "name": "punctuation.definition.parameters.ruby"
+        }
+      },
+      "comment": "the method pattern comes from the symbol pattern, see there for a explaination",
+      "end": "\\)",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.parameters.ruby"
+        }
+      },
+      "name": "meta.function.method.with-arguments.ruby",
+      "patterns": [
+        {
+          "begin": "(?=[&*_a-zA-Z])",
+          "end": "(?=[,)])",
+          "patterns": [
+            {
+              "captures": {
+                "1": {
+                  "name": "storage.type.variable.ruby"
+                },
+                "2": {
+                  "name": "constant.other.symbol.hashkey.parameter.function.ruby"
+                },
+                "3": {
+                  "name": "punctuation.definition.constant.ruby"
+                },
+                "4": {
+                  "name": "variable.parameter.function.ruby"
+                }
+              },
+              "match": "\\G([&*]?)(?:([_a-zA-Z]\\w*(:))|([_a-zA-Z]\\w*))"
+            },
+            {
+              "include": "#parens"
+            },
+            {
+              "include": "#braces"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ],
+      "repository": {
+        "braces": {
+          "begin": "\\{",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.section.function.begin.ruby"
+            }
+          },
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.function.end.ruby"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#parens"
+            },
+            {
+              "include": "#braces"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        "parens": {
+          "begin": "\\(",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.section.function.begin.ruby"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.function.end.ruby"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#parens"
+            },
+            {
+              "include": "#braces"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "begin": "(?x)\n\t\t\t         (?=def\\b)                                                      # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\s+                                              # the def keyword\n\t\t\t         ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                   # a method name prefix\n\t\t\t           (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                              # the method name\n\t\t\t           |===?|!=|!~|>[>=]?|<=>|<[<=]?|[%&`/\\|^]|\\*\\*?|=?~|[-+]@?|\\[\\]=?) )  # …or an operator method\n\t\t\t         [ \\t]                                                          # the space separating the arguments\n\t\t\t         (?=[ \\t]*[^\\s#;])                                              # make sure arguments and not a comment follow\n\t\t\t        ",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.def.ruby"
+        },
+        "2": {
+          "name": "entity.name.function.ruby"
+        }
+      },
+      "comment": "same as the previous rule, but without parentheses around the arguments",
+      "end": "$",
+      "name": "meta.function.method.with-arguments.ruby",
+      "patterns": [
+        {
+          "begin": "(?![\\s,])",
+          "end": "(?=,|$)",
+          "patterns": [
+            {
+              "captures": {
+                "1": {
+                  "name": "storage.type.variable.ruby"
+                },
+                "2": {
+                  "name": "constant.other.symbol.hashkey.parameter.function.ruby"
+                },
+                "3": {
+                  "name": "punctuation.definition.constant.ruby"
+                },
+                "4": {
+                  "name": "variable.parameter.function.ruby"
+                }
+              },
+              "match": "\\G([&*]?)(?:([_a-zA-Z]\\w*(:))|([_a-zA-Z]\\w*))",
+              "name": "variable.parameter.function.ruby"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "keyword.control.def.ruby"
+        },
+        "3": {
+          "name": "entity.name.function.ruby"
+        }
+      },
+      "comment": " the optional name is just to catch the def also without a method-name",
+      "match": "(?x)\n\t\t\t         (?=def\\b)                                                           # an optimization to help Oniguruma fail fast\n\t\t\t         (?<=^|\\s)(def)\\b                                                    # the def keyword\n\t\t\t         ( \\s+                                                               # an optional group of whitespace followed by…\n\t\t\t           ( (?>[a-zA-Z_]\\w*(?>\\.|::))?                                      # a method name prefix\n\t\t\t             (?>[a-zA-Z_]\\w*(?>[?!]|=(?!>))?                                 # the method name\n\t\t\t             |===?|!=|!~|>[>=]?|<=>|<[<=]?|[%&`/\\|^]|\\*\\*?|=?~|[-+]@?|\\[\\]=?) ) )?  # …or an operator method\n\t\t\t        ",
+      "name": "meta.function.method.without-arguments.ruby"
+    },
+    {
+      "match": "\\b\\d(?>_?\\d)*(?=\\.\\d|[eE])(\\.\\d(?>_?\\d)*)?([eE][-+]?\\d(?>_?\\d)*)?r?i?\\b",
+      "name": "constant.numeric.float.ruby"
+    },
+    {
+      "match": "\\b(0|(0[dD]\\d|[1-9])(?>_?\\d)*)r?i?\\b",
+      "name": "constant.numeric.integer.ruby"
+    },
+    {
+      "match": "\\b0[xX]\\h(?>_?\\h)*r?i?\\b",
+      "name": "constant.numeric.hex.ruby"
+    },
+    {
+      "match": "\\b0[bB][01](?>_?[01])*r?i?\\b",
+      "name": "constant.numeric.binary.ruby"
+    },
+    {
+      "match": "\\b0([oO]?[0-7](?>_?[0-7])*)?r?i?\\b",
+      "name": "constant.numeric.octal.ruby"
+    },
+    {
+      "begin": ":'",
+      "captures": {
+        "0": {
+          "name": "punctuation.definition.constant.ruby"
+        }
+      },
+      "end": "'",
+      "name": "constant.other.symbol.single-quoted.ruby",
+      "patterns": [
+        {
+          "match": "\\\\['\\\\]",
+          "name": "constant.character.escape.ruby"
+        }
+      ]
+    },
+    {
+      "begin": ":\"",
+      "captures": {
+        "0": {
+          "name": "punctuation.definition.constant.ruby"
+        }
+      },
+      "end": "\"",
+      "name": "constant.other.symbol.double-quoted.ruby",
+      "patterns": [
+        {
+          "include": "#interpolated_ruby"
+        },
+        {
+          "include": "#escaped_char"
+        }
+      ]
+    },
+    {
+      "comment": "Needs higher precidence than regular expressions.",
+      "match": "(?<!\\()/=",
+      "name": "keyword.operator.assignment.augmented.ruby"
+    },
+    {
+      "begin": "'",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.ruby"
+        }
+      },
+      "comment": "single quoted string (does not allow interpolation)",
+      "end": "'",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.ruby"
+        }
+      },
+      "name": "string.quoted.single.ruby",
+      "patterns": [
+        {
+          "match": "\\\\'|\\\\\\\\",
+          "name": "constant.character.escape.ruby"
+        }
+      ]
+    },
+    {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.ruby"
+        }
+      },
+      "comment": "double quoted string (allows for interpolation)",
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.ruby"
+        }
+      },
+      "name": "string.quoted.double.ruby",
+      "patterns": [
+        {
+          "include": "#interpolated_ruby"
+        },
+        {
+          "include": "#escaped_char"
+        }
+      ]
+    },
+    {
+      "begin": "`",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.ruby"
+        }
+      },
+      "comment": "execute string (allows for interpolation)",
+      "end": "`",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.ruby"
+        }
+      },
+      "name": "string.interpolated.ruby",
+      "patterns": [
+        {
+          "include": "#interpolated_ruby"
+        },
+        {
+          "include": "#escaped_char"
+        }
+      ]
+    },
+    {
+      "include": "#percent_literals"
+    },
+    {
+      "begin": "(?x)\n\t\t\t   (?:\n\t\t\t     ^                      # beginning of line\n\t\t\t   | (?<=                   # or look-behind on:\n\t\t\t       [=>~(?:\\[,|&;]\n\t\t\t     | [\\s;]if\\s\t\t\t# keywords\n\t\t\t     | [\\s;]elsif\\s\n\t\t\t     | [\\s;]while\\s\n\t\t\t     | [\\s;]unless\\s\n\t\t\t     | [\\s;]when\\s\n\t\t\t     | [\\s;]assert_match\\s\n\t\t\t     | [\\s;]or\\s\t\t\t# boolean opperators\n\t\t\t     | [\\s;]and\\s\n\t\t\t     | [\\s;]not\\s\n\t\t\t     | [\\s.]index\\s\t\t\t# methods\n\t\t\t     | [\\s.]scan\\s\n\t\t\t     | [\\s.]sub\\s\n\t\t\t     | [\\s.]sub!\\s\n\t\t\t     | [\\s.]gsub\\s\n\t\t\t     | [\\s.]gsub!\\s\n\t\t\t     | [\\s.]match\\s\n\t\t\t     )\n\t\t\t   | (?<=                  # or a look-behind with line anchor:\n\t\t\t        ^when\\s            # duplication necessary due to limits of regex\n\t\t\t      | ^if\\s\n\t\t\t      | ^elsif\\s\n\t\t\t      | ^while\\s\n\t\t\t      | ^unless\\s\n\t\t\t      )\n\t\t\t   )\n\t\t\t   \\s*((/))(?![*+{}?])\n\t\t\t",
+      "captures": {
+        "1": {
+          "name": "string.regexp.classic.ruby"
+        },
+        "2": {
+          "name": "punctuation.definition.string.ruby"
+        }
+      },
+      "comment": "regular expressions (normal)\n\t\t\twe only start a regexp if the character before it (excluding whitespace)\n\t\t\tis what we think is before a regexp\n\t\t\t",
+      "contentName": "string.regexp.classic.ruby",
+      "end": "((/[eimnosux]*))",
+      "patterns": [
+        {
+          "include": "#regex_sub"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.constant.ruby"
+        }
+      },
+      "comment": "symbols",
+      "match": "(?<!:)(:)(?>[a-zA-Z_]\\w*(?>[?!]|=(?![>=]))?|===?|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[\\]=?|(@@?|\\$)[a-zA-Z_]\\w*)",
+      "name": "constant.other.symbol.ruby"
+    },
+    {
+      "begin": "^=begin",
+      "captures": {
+        "0": {
+          "name": "punctuation.definition.comment.ruby"
+        }
+      },
+      "comment": "multiline comments",
+      "end": "^=end",
+      "name": "comment.block.documentation.ruby"
+    },
+    {
+      "begin": "(^[ \\t]+)?(?=#)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.whitespace.comment.leading.ruby"
+        }
+      },
+      "end": "(?!\\G)",
+      "patterns": [
+        // {
+        // 	"begin": "#",
+        // 	"beginCaptures": {
+        // 		"0": {
+        // 			"name": "punctuation.definition.comment.ruby"
+        // 		}
+        // 	},
+        // 	"end": "\\n",
+        // 	"name": "comment.line.number-sign.ruby"
+        // }
+      ]
+    },
+    {
+      "begin": "^__END__\\n",
+      "captures": {
+        "0": {
+          "name": "string.unquoted.program-block.ruby"
+        }
+      },
+      "comment": "__END__ marker",
+      "contentName": "text.plain",
+      "end": "(?=not)impossible",
+      "patterns": [
+        {
+          "begin": "(?=<?xml|<(?i:html\\b)|!DOCTYPE (?i:html\\b))",
+          "end": "(?=not)impossible",
+          "name": "text.html.embedded.ruby",
+          "patterns": [
+            {
+              "include": "text.html.basic"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "begin": "(?>=\\s*<<(\\w+))",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.ruby"
+        }
+      },
+      "end": "^\\1$",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.ruby"
+        }
+      },
+      "name": "string.unquoted.heredoc.ruby",
+      "patterns": [
+        {
+          "include": "#heredoc"
+        },
+        {
+          "include": "#interpolated_ruby"
+        },
+        {
+          "include": "#escaped_char"
+        }
+      ]
+    },
+    {
+      "begin": "(?><<[-~](\\w+))",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.ruby"
+        }
+      },
+      "comment": "heredoc with indented terminator",
+      "end": "\\s*\\1$",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.ruby"
+        }
+      },
+      "name": "string.unquoted.heredoc.ruby",
+      "patterns": [
+        {
+          "include": "#heredoc"
+        },
+        {
+          "include": "#interpolated_ruby"
+        },
+        {
+          "include": "#escaped_char"
+        }
+      ]
+    },
+    {
+      "begin": "(?<=\\{|do|\\{\\s|do\\s)(\\|)",
+      "captures": {
+        "1": {
+          "name": "punctuation.separator.arguments.ruby"
+        }
+      },
+      "end": "(?<!\\|)(\\|)(?!\\|)",
+      "patterns": [
+        {
+          "include": "$self"
+        },
+        {
+          "match": "[_a-zA-Z][_a-zA-Z0-9]*",
+          "name": "variable.other.block.ruby"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.variable.ruby"
+        }
+      ]
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.separator.method.ruby"
+        }
+      },
+      "comment": "Safe navigation operator - Added in 2.3",
+      "match": "(&\\.)\\s*(?![A-Z])"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.separator.namespace.ruby"
+        }
+      },
+      "comment": "Mark as namespace separator if double colons followed by capital letter",
+      "match": "(::)\\s*(?=[A-Z])"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "punctuation.separator.method.ruby"
+        }
+      },
+      "comment": "Mark as method separator if double colons not followed by capital letter",
+      "match": "(\\.|::)\\s*(?![A-Z])"
+    },
+    {
+      "comment": "Must come after method and constant separators to prefer double colons",
+      "match": ":",
+      "name": "punctuation.separator.other.ruby"
+    },
+    {
+      "match": "\\{",
+      "name": "punctuation.section.scope.begin.ruby"
+    },
+    {
+      "match": "\\}",
+      "name": "punctuation.section.scope.end.ruby"
+    },
+    {
+      "match": "\\[",
+      "name": "punctuation.section.array.begin.ruby"
+    },
+    {
+      "match": "\\]",
+      "name": "punctuation.section.array.end.ruby"
+    },
+    {
+      "match": "\\(|\\)",
+      "name": "punctuation.section.function.ruby"
+    }
+  ],
+  "repository": {},
+}
