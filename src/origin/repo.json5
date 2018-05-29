@@ -146,37 +146,37 @@
 						{"include": "#interpolated_ruby"}
 					],
 				},
-				{
-          "name": "string.regexp.percent.ruby",
-					"begin": "%r(?:([(\\[{<])|([^\\w\\s]|_))",
-          "end": "([)\\]}>]\\2|\\1\\2)[eimnosux]*",
-					"beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
-					"endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
-					"patterns": [
-						{
-							"begin": "\\G(?<=\\()(?!\\))",
-							"end": "(?=\\))",
-							"patterns": [{"include": "#parens"}]
-						},
-						{
-							"begin": "\\G(?<=\\[)(?!\\])",
-							"end": "(?=\\])",
-							"patterns": [{"include": "#brackets"}]
-						},
-						{
-							"begin": "\\G(?<=\\{)(?!\\})",
-							"end": "(?=\\})",
-							"patterns": [{"include": "#braces"}]
-						},
-						{
-							"begin": "\\G(?<=<)(?!>)",
-							"end": "(?=>)",
-              "patterns":
-              [{"include": "#angles"}]
-						},
-						{"include": "#regex_sub"}
-					],
-				},
+				// {
+        //   "name": "string.regexp.percent.ruby",
+				// 	"begin": "%r(?:([(\\[{<])|([^\\w\\s]|_))",
+        //   "end": "([)\\]}>]\\2|\\1\\2)[eimnosux]*",
+				// 	"beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
+				// 	"endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
+				// 	"patterns": [
+				// 		{
+				// 			"begin": "\\G(?<=\\()(?!\\))",
+				// 			"end": "(?=\\))",
+				// 			"patterns": [{"include": "#parens"}]
+				// 		},
+				// 		{
+				// 			"begin": "\\G(?<=\\[)(?!\\])",
+				// 			"end": "(?=\\])",
+				// 			"patterns": [{"include": "#brackets"}]
+				// 		},
+				// 		{
+				// 			"begin": "\\G(?<=\\{)(?!\\})",
+				// 			"end": "(?=\\})",
+				// 			"patterns": [{"include": "#braces"}]
+				// 		},
+				// 		{
+				// 			"begin": "\\G(?<=<)(?!>)",
+				// 			"end": "(?=>)",
+        //       "patterns":
+        //       [{"include": "#angles"}]
+				// 		},
+				// 		{"include": "#regex_sub"}
+				// 	],
+				// },
 				{
 					"begin": "%s(?:([(\\[{<])|([^\\w\\s]|_))",
 					"beginCaptures": {"0": {"name": "punctuation.definition.constant.begin.ruby"}},
