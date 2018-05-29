@@ -1,0 +1,39 @@
+{
+  "repository": {
+    "punctuation": {
+      "patterns": [
+        {
+          "begin": "(?<=\\{|do|\\{\\s|do\\s)(\\|)",
+          "captures": {"1": {"name": "punctuation.separator.arguments.ruby"}},
+          "end": "(?<!\\|)(\\|)(?!\\|)",
+          "patterns": [
+            {
+              "include": "$self"
+            },
+            {
+              "match": "[_a-zA-Z][_a-zA-Z0-9]*",
+              "name": "variable.other.block.ruby"
+            },
+            {
+              "match": ",",
+              "name": "punctuation.separator.variable.ruby"
+            }
+          ]
+        },
+        {
+          "match": ";",
+          "name": "punctuation.separator.statement.ruby"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.object.ruby"
+        },
+        {
+          "comment": "Scope Resolution Operator",
+          "match": "::",
+          "name": "punctuation.separator.scope.ruby"
+        },
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "repository": {
+    "operator": {
+      "patterns": [
+        {
+          "name": "keyword.operator.boolean_conversion.ruby",
+          "match": "\\s\\!\\!",
+        }
+      ]
+    }
+  }
+}

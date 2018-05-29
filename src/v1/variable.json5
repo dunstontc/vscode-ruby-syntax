@@ -22,6 +22,10 @@
           "match": "(\\$)(!|@|&|`|'|\\+|\\d+|~|=|/|\\\\|,|;|\\.|<|>|_|\\*|\\$|\\?|:|\"|-[0adFiIlpvw])",
           "name": "variable.other.readwrite.global.pre-defined.ruby"
         },
+        {
+          "match": "\\b[_A-Z]\\w*\\b",
+          "name": "variable.other.constant.ruby",
+        },
       ]
     }
   }

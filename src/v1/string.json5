@@ -26,10 +26,19 @@
             {"include": "#interpolated_ruby"}
           ],
         },
+        // =====================================================================
         {
           "name": "string.regexp.slash.ruby",
-					"begin": "\\s/",
-          "end": "/",
+					"begin": "\\s[/]",
+          "end": "([\\/]|$)",
+					"beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
+					"endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
+					"patterns": [{"include": "#regex_sub"}],
+				},
+        {
+          "name": "string.regexp.slash.ruby",
+					"begin": "\\s%r\\{",
+          "end": "(}|$)",
 					"beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
 					"endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
 					"patterns": [{"include": "#regex_sub"}],
@@ -37,7 +46,15 @@
         {
           "name": "string.regexp.slash.ruby",
 					"begin": "\\s%r\\[",
-          "end": "]",
+          "end": "(]|$)",
+					"beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
+					"endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
+					"patterns": [{"include": "#regex_sub"}],
+				},
+        {
+          "name": "string.regexp.slash.ruby",
+					"begin": "\\s%r\\(",
+          "end": "(\\)|$)",
 					"beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
 					"endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
 					"patterns": [{"include": "#regex_sub"}],

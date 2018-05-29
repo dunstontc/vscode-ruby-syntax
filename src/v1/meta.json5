@@ -1,0 +1,15 @@
+{
+  "repository": {
+    "meta": {
+      "patterns": [
+        {
+          "begin": "\\b(ENV)\\[",
+          "beginCaptures": {"1": {"name": "variable.other.constant.ruby"}},
+          "end": "\\]",
+          "name": "meta.environment-variable.ruby",
+          "patterns": [{"include": "$self"}],
+        },
+      ]
+    }
+  }
+}

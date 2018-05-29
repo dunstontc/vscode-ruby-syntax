@@ -5,7 +5,7 @@ const json5 = require('gulp-json5-to-json');
 gulp.task('default', () => { });
 
 gulp.task('compile-json', () => {
-  gulp.src('./src/syntax/*.json5')
+  gulp.src('./src/v1/*.json5')
     .pipe(merge({
       fileName: "ruby.tmLanguage.json",
       json5: true,
