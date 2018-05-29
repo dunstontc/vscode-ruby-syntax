@@ -50,54 +50,26 @@
 	"patterns": [
 		{
 			"captures": {
-				"1": {
-					"name": "keyword.control.class.ruby"
-				},
-				"2": {
-					"name": "entity.name.type.class.ruby"
-				},
-				"4": {
-					"name": "entity.other.inherited-class.ruby"
-				},
-				"5": {
-					"name": "punctuation.separator.inheritance.ruby"
-				},
-				"6": {
-					"name": "variable.other.object.ruby"
-				},
-				"7": {
-					"name": "punctuation.definition.variable.ruby"
-				}
+				"1": {"name": "keyword.control.class.ruby"},
+				"2": {"name": "entity.name.type.class.ruby"},
+				"4": {"name": "entity.other.inherited-class.ruby"},
+				"5": {"name": "punctuation.separator.inheritance.ruby"},
+				"6": {"name": "variable.other.object.ruby"},
+				"7": {"name": "punctuation.definition.variable.ruby"}
 			},
 			"match": "(?x)\n^\\s*(class)\\s+\n(\n  (\n    [.a-zA-Z0-9_:]+\n    (\\s*(<)\\s*[.a-zA-Z0-9_:]+)?   # class A < B\n  )\n  |\n  ((<<)\\s*[.a-zA-Z0-9_:]+)         # class << C\n)",
 			"name": "meta.class.ruby"
 		},
 		{
 			"captures": {
-				"1": {
-					"name": "keyword.control.module.ruby"
-				},
-				"2": {
-					"name": "entity.name.type.module.ruby"
-				},
-				"3": {
-					"name": "entity.other.inherited-class.module.first.ruby"
-				},
-				"4": {
-					"name": "punctuation.separator.inheritance.ruby"
-				},
-				"5": {
-					"name": "entity.other.inherited-class.module.second.ruby"
-				},
-				"6": {
-					"name": "punctuation.separator.inheritance.ruby"
-				},
-				"7": {
-					"name": "entity.other.inherited-class.module.third.ruby"
-				},
-				"8": {
-					"name": "punctuation.separator.inheritance.ruby"
-				}
+				"1": {"name": "keyword.control.module.ruby"},
+				"2": {"name": "entity.name.type.module.ruby"},
+				"3": {"name": "entity.other.inherited-class.module.first.ruby"},
+				"4": {"name": "punctuation.separator.inheritance.ruby"},
+				"5": {"name": "entity.other.inherited-class.module.second.ruby"},
+				"6": {"name": "punctuation.separator.inheritance.ruby"},
+				"7": {"name": "entity.other.inherited-class.module.third.ruby"},
+				"8": {"name": "punctuation.separator.inheritance.ruby"},
 			},
 			"match": "(?x)\n^\\s*(module)\\s+\n(\n  ([A-Z]\\w*(::))?\n  ([A-Z]\\w*(::))?\n  ([A-Z]\\w*(::))*\n  [A-Z]\\w*\n)",
 			"name": "meta.module.ruby"
@@ -108,21 +80,13 @@
 			"name": "invalid.deprecated.ruby"
 		},
 		{
-			"captures": {
-				"1": {
-					"name": "punctuation.definition.constant.hashkey.ruby"
-				}
-			},
+			"captures": {"1": {"name": "punctuation.definition.constant.hashkey.ruby"}},
 			"comment": "symbols as hash key (1.9 syntax)",
 			"match": "(?>[a-zA-Z_]\\w*(?>[?!])?)(:)(?!:)",
 			"name": "constant.language.symbol.hashkey.ruby"
 		},
 		{
-			"captures": {
-				"1": {
-					"name": "punctuation.definition.constant.ruby"
-				}
-			},
+			"captures": {"1": {"name": "punctuation.definition.constant.ruby"}},
 			"comment": "symbols as hash key (1.8 syntax)",
 			"match": "(?<!:)(:)(?>[a-zA-Z_]\\w*(?>[?!])?)(?=\\s*=>)",
 			"name": "constant.language.symbol.hashkey.ruby"
@@ -169,69 +133,38 @@
 		},
 		{
 			"begin": "\\b(?<!\\.|::)(require|require_relative)\\b(?![?!])",
-			"captures": {
-				"1": {
-					"name": "keyword.other.special-method.ruby"
-				}
-			},
+			"captures": {"1": {"name": "keyword.other.special-method.ruby"}},
 			"end": "$|(?=#|})",
 			"name": "meta.require.ruby",
 			"patterns": [
-				{
-					"include": "$self"
-				}
-			]
+				{"include": "$self"}]
 		},
 		{
-			"captures": {
-				"1": {
-					"name": "punctuation.definition.variable.ruby"
-				}
-			},
+			"captures": {"1": {"name": "punctuation.definition.variable.ruby"}},
 			"match": "(@)[a-zA-Z_]\\w*",
 			"name": "variable.other.readwrite.instance.ruby"
 		},
 		{
-			"captures": {
-				"1": {
-					"name": "punctuation.definition.variable.ruby"
-				}
-			},
+			"captures": {"1": {"name": "punctuation.definition.variable.ruby"}},
 			"match": "(@@)[a-zA-Z_]\\w*",
 			"name": "variable.other.readwrite.class.ruby"
 		},
 		{
-			"captures": {
-				"1": {
-					"name": "punctuation.definition.variable.ruby"
-				}
-			},
+			"captures": {"1": {"name": "punctuation.definition.variable.ruby"}},
 			"match": "(\\$)[a-zA-Z_]\\w*",
 			"name": "variable.other.readwrite.global.ruby"
 		},
 		{
-			"captures": {
-				"1": {
-					"name": "punctuation.definition.variable.ruby"
-				}
-			},
+			"captures": {"1": {"name": "punctuation.definition.variable.ruby"}},
 			"match": "(\\$)(!|@|&|`|'|\\+|\\d+|~|=|/|\\\\|,|;|\\.|<|>|_|\\*|\\$|\\?|:|\"|-[0adFiIlpv])",
 			"name": "variable.other.readwrite.global.pre-defined.ruby"
 		},
 		{
 			"begin": "\\b(ENV)\\[",
-			"beginCaptures": {
-				"1": {
-					"name": "variable.other.constant.ruby"
-				}
-			},
+			"beginCaptures": {"1": {"name": "variable.other.constant.ruby"}},
 			"end": "]",
 			"name": "meta.environment-variable.ruby",
-			"patterns": [
-				{
-					"include": "$self"
-				}
-			]
+			"patterns": [{"include": "$self"}]
 		},
 		{
 			"match": "\\b[A-Z]\\w*(?=((\\.|::)[A-Za-z]|\\[))",
@@ -248,23 +181,13 @@
 		{
 			"begin": "(?x)\n(?=def\\b)                          # optimization to help Oniguruma fail fast\n(?<=^|\\s)(def)\\s+\n(\n  (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix\n  (?>                               # method name\n    [a-zA-Z_]\\w*(?>[?!]|=(?!>))?\n    |\n    ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n  )\n)\n\\s*(\\()",
 			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.def.ruby"
-				},
-				"2": {
-					"name": "entity.name.function.ruby"
-				},
-				"3": {
-					"name": "punctuation.definition.parameters.ruby"
-				}
+				"1": {"name": "keyword.control.def.ruby"},
+				"2": {"name": "entity.name.function.ruby"},
+				"3": {"name": "punctuation.definition.parameters.ruby"}
 			},
 			"comment": "The method pattern comes from the symbol pattern. See there for an explanation.",
 			"end": "\\)",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.parameters.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.definition.parameters.ruby"}},
 			"name": "meta.function.method.with-arguments.ruby",
 			"patterns": [
 				{
@@ -273,24 +196,14 @@
 					"patterns": [
 						{
 							"captures": {
-								"1": {
-									"name": "storage.type.variable.ruby"
-								},
-								"2": {
-									"name": "constant.language.symbol.hashkey.parameter.function.ruby"
-								},
-								"3": {
-									"name": "punctuation.definition.constant.hashkey.ruby"
-								},
-								"4": {
-									"name": "variable.parameter.function.ruby"
-								}
+								"1": {"name": "storage.type.variable.ruby"},
+								"2": {"name": "constant.language.symbol.hashkey.parameter.function.ruby"},
+								"3": {"name": "punctuation.definition.constant.hashkey.ruby"},
+								"4": {"name": "variable.parameter.function.ruby"}
 							},
 							"match": "\\G([&*]?)(?:([_a-zA-Z]\\w*(:))|([_a-zA-Z]\\w*))"
 						},
-						{
-							"include": "$self"
-						}
+						{"include": "$self"}
 					]
 				}
 			]
@@ -298,12 +211,8 @@
 		{
 			"begin": "(?x)\n(?=def\\b)                          # optimization to help Oniguruma fail fast\n(?<=^|\\s)(def)\\s+\n(\n  (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix\n  (?>                               # method name\n    [a-zA-Z_]\\w*(?>[?!]|=(?!>))?\n    |\n    ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n  )\n)\n[ \\t]\n(?=[ \\t]*[^\\s#;])                 # make sure the following is not comment",
 			"beginCaptures": {
-				"1": {
-					"name": "keyword.control.def.ruby"
-				},
-				"2": {
-					"name": "entity.name.function.ruby"
-				}
+				"1": {"name": "keyword.control.def.ruby"},
+				"2": {"name": "entity.name.function.ruby"}
 			},
 			"comment": "same as the previous rule, but without parentheses around the arguments",
 			"end": "$",
@@ -315,36 +224,22 @@
 					"patterns": [
 						{
 							"captures": {
-								"1": {
-									"name": "storage.type.variable.ruby"
-								},
-								"2": {
-									"name": "constant.language.symbol.hashkey.parameter.function.ruby"
-								},
-								"3": {
-									"name": "punctuation.definition.constant.hashkey.ruby"
-								},
-								"4": {
-									"name": "variable.parameter.function.ruby"
-								}
+								"1": {"name": "storage.type.variable.ruby"},
+								"2": {"name": "constant.language.symbol.hashkey.parameter.function.ruby"},
+								"3": {"name": "punctuation.definition.constant.hashkey.ruby"},
+								"4": {"name": "variable.parameter.function.ruby"},
 							},
 							"match": "\\G([&*]?)(?:([_a-zA-Z]\\w*(:))|([_a-zA-Z]\\w*))"
 						},
-						{
-							"include": "$self"
-						}
+						{"include": "$self"}
 					]
 				}
 			]
 		},
 		{
 			"captures": {
-				"1": {
-					"name": "keyword.control.def.ruby"
-				},
-				"3": {
-					"name": "entity.name.function.ruby"
-				}
+				"1": {"name": "keyword.control.def.ruby"},
+				"3": {"name": "entity.name.function.ruby"},
 			},
 			"comment": " the optional name is just to catch the def also without a method-name",
 			"match": "(?x)\n(?=def\\b)                            # optimization to help Oniguruma fail fast\n(?<=^|\\s)(def)\\b\n(\n  \\s+\n  (\n    (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix\n    (?>                               # method name\n      [a-zA-Z_]\\w*(?>[?!]|=(?!>))?\n      |\n      ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n    )\n  )\n)?",
@@ -356,18 +251,10 @@
 		},
 		{
 			"begin": ":'",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.definition.symbol.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.definition.symbol.begin.ruby"}},
 			"comment": "symbol literal with '' delimitor",
 			"end": "'",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.symbol.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.definition.symbol.end.ruby"}},
 			"name": "constant.language.symbol.ruby",
 			"patterns": [
 				{
@@ -378,26 +265,13 @@
 		},
 		{
 			"begin": ":\"",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.symbol.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.symbol.begin.ruby"}},
 			"comment": "symbol literal with \"\" delimitor",
 			"end": "\"",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.symbol.end.ruby"
-				}
-			},
-			"name": "constant.language.symbol.interpolated.ruby",
+			"endCaptures": {"0": {"name": "punctuation.section.symbol.end.ruby"}},"name": "constant.language.symbol.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#interpolated_ruby"
-				},
-				{
-					"include": "#escaped_char"
-				}
+				{"include": "#interpolated_ruby"},
+				{"include": "#escaped_char"},
 			]
 		},
 		{
@@ -407,18 +281,10 @@
 		},
 		{
 			"begin": "'",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.definition.string.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
 			"comment": "string literal with '' delimitor",
 			"end": "'",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.string.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
 			"name": "string.quoted.single.ruby",
 			"patterns": [
 				{
@@ -429,147 +295,75 @@
 		},
 		{
 			"begin": "\"",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.definition.string.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
 			"comment": "string literal with interpolation and \"\" delimitor",
 			"end": "\"",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.string.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
 			"name": "string.quoted.double.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#interpolated_ruby"
-				},
-				{
-					"include": "#escaped_char"
-				}
+				{"include": "#interpolated_ruby"},
+        {"include": "#escaped_char"}
 			]
 		},
 		{
 			"begin": "`",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.definition.string.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
 			"comment": "execute string (allows for interpolation)",
 			"end": "`",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.string.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
 			"name": "string.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#interpolated_ruby"
-				},
-				{
-					"include": "#escaped_char"
-				}
+				{"include": "#interpolated_ruby"},
+				{"include": "#escaped_char"}
 			]
 		},
 		{
 			"begin": "(?x)\n(?<![\\w)])((/))(?![?*+])\n(?=\n  (?:\\\\/|[^/])*+          # Do NOT change the order\n  /[eimnosux]*\\s*\n  (?:\n    [)\\]}#.,?:]|\\|\\||&&|<=>|=>|==|=~|!~|!=|;|$|\n    if|else|elsif|then|do|end|unless|while|until|or|and\n  )\n  |\n  $\n)",
 			"captures": {
-				"1": {
-					"name": "string.regexp.interpolated.ruby"
-				},
-				"2": {
-					"name": "punctuation.section.regexp.ruby"
-				}
+				"1": {"name": "string.regexp.interpolated.ruby"},
+				"2": {"name": "punctuation.section.regexp.ruby"},
 			},
 			"comment": "regular expression literal with interpolation",
 			"contentName": "string.regexp.interpolated.ruby",
 			"end": "((/[eimnosux]*))",
-			"patterns": [
-				{
-					"include": "#regex_sub"
-				}
-			]
+			"patterns": [{"include": "#regex_sub"}]
 		},
 		{
 			"begin": "%r{",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.regexp.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.regexp.begin.ruby"}},
 			"end": "}[eimnosux]*",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.regexp.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.regexp.end.ruby"}},
 			"name": "string.regexp.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#regex_sub"
-				},
-				{
-					"include": "#nest_curly_r"
-				}
+				{"include": "#regex_sub"},
+				{"include": "#nest_curly_r"}
 			]
 		},
 		{
 			"begin": "%r\\[",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.regexp.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.regexp.begin.ruby"}},
 			"end": "][eimnosux]*",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.regexp.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.regexp.end.ruby"}},
 			"name": "string.regexp.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#regex_sub"
-				},
-				{
-					"include": "#nest_brackets_r"
-				}
+				{"include": "#regex_sub"},
+				{"include": "#nest_brackets_r"}
 			]
 		},
 		{
 			"begin": "%r\\(",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.regexp.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.regexp.begin.ruby"}},
 			"end": "\\)[eimnosux]*",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.regexp.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.regexp.end.ruby"}},
 			"name": "string.regexp.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#regex_sub"
-				},
-				{
-					"include": "#nest_parens_r"
-				}
+				{"include": "#regex_sub"},
+				{"include": "#nest_parens_r"},
 			]
 		},
 		{
 			"begin": "%r<",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.regexp.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.regexp.begin.ruby"}},
 			"end": ">[eimnosux]*",
 			"endCaptures": {
 				"0": {
@@ -578,270 +372,138 @@
 			},
 			"name": "string.regexp.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#regex_sub"
-				},
-				{
-					"include": "#nest_ltgt_r"
-				}
+				{"include": "#regex_sub"},
+				{"include": "#nest_ltgt_r"},
 			]
 		},
 		{
 			"begin": "%r([^\\w])",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.regexp.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.regexp.begin.ruby"}},
 			"end": "\\1[eimnosux]*",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.regexp.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.regexp.end.ruby"}},
 			"name": "string.regexp.interpolated.ruby",
-			"patterns": [
-				{
-					"include": "#regex_sub"
-				}
-			]
+			"patterns": [{"include": "#regex_sub"}]
 		},
 		{
 			"begin": "%I\\[",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": "]",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "constant.language.symbol.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#interpolated_ruby"
-				},
-				{
-					"include": "#escaped_char"
-				},
-				{
-					"include": "#nest_brackets_i"
-				}
+				{"include": "#interpolated_ruby"},
+				{"include": "#escaped_char"},
+				{"include": "#nest_brackets_i"},
 			]
 		},
 		{
 			"begin": "%I\\(",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": "\\)",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "constant.language.symbol.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#interpolated_ruby"
-				},
-				{
-					"include": "#escaped_char"
-				},
-				{
-					"include": "#nest_parens_i"
-				}
+				{"include": "#interpolated_ruby"},
+				{"include": "#escaped_char"},
+				{"include": "#nest_parens_i"},
 			]
 		},
 		{
 			"begin": "%I<",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": ">",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "constant.language.symbol.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#interpolated_ruby"
-				},
-				{
-					"include": "#escaped_char"
-				},
-				{
-					"include": "#nest_ltgt_i"
-				}
+				{"include": "#interpolated_ruby"},
+				{"include": "#escaped_char"},
+				{"include": "#nest_ltgt_i"},
 			]
 		},
 		{
 			"begin": "%I{",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": "}",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "constant.language.symbol.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#interpolated_ruby"
-				},
-				{
-					"include": "#escaped_char"
-				},
-				{
-					"include": "#nest_curly_i"
-				}
+				{"include": "#interpolated_ruby"},
+				{"include": "#escaped_char"},
+				{"include": "#nest_curly_i"},
 			]
 		},
 		{
 			"begin": "%I([^\\w])",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": "\\1",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "constant.language.symbol.interpolated.ruby",
 			"patterns": [
-				{
-					"include": "#interpolated_ruby"
-				},
-				{
-					"include": "#escaped_char"
-				}
+				{"include": "#interpolated_ruby"},
+				{"include": "#escaped_char"},
 			]
 		},
 		{
 			"begin": "%i\\[",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": "]",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "constant.language.symbol.ruby",
 			"patterns": [
 				{
 					"match": "\\\\]|\\\\\\\\",
 					"name": "constant.character.escape.ruby"
 				},
-				{
-					"include": "#nest_brackets"
-				}
+				{"include": "#nest_brackets"}
 			]
 		},
 		{
 			"begin": "%i\\(",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": "\\)",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "constant.language.symbol.ruby",
 			"patterns": [
 				{
 					"match": "\\\\\\)|\\\\\\\\",
 					"name": "constant.character.escape.ruby"
 				},
-				{
-					"include": "#nest_parens"
-				}
+				{"include": "#nest_parens"}
 			]
 		},
 		{
 			"begin": "%i<",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": ">",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "constant.language.symbol.ruby",
 			"patterns": [
 				{
 					"match": "\\\\>|\\\\\\\\",
 					"name": "constant.character.escape.ruby"
 				},
-				{
-					"include": "#nest_ltgt"
-				}
+				{"include": "#nest_ltgt"}
 			]
 		},
 		{
 			"begin": "%i{",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": "}",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "constant.language.symbol.ruby",
 			"patterns": [
 				{
 					"match": "\\\\}|\\\\\\\\",
 					"name": "constant.character.escape.ruby"
 				},
-				{
-					"include": "#nest_curly"
-				}
+				{"include": "#nest_curly"}
 			]
 		},
 		{
 			"begin": "%i([^\\w])",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": "\\1",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "constant.language.symbol.ruby",
 			"patterns": [
 				{
@@ -852,17 +514,9 @@
 		},
 		{
 			"begin": "%W\\[",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": "]",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "string.quoted.other.interpolated.ruby",
 			"patterns": [
 				{
@@ -878,17 +532,9 @@
 		},
 		{
 			"begin": "%W\\(",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.array.begin.ruby"
-				}
-			},
+			"beginCaptures": {"0": {"name": "punctuation.section.array.begin.ruby"}},
 			"end": "\\)",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.array.end.ruby"
-				}
-			},
+			"endCaptures": {"0": {"name": "punctuation.section.array.end.ruby"}},
 			"name": "string.quoted.other.interpolated.ruby",
 			"patterns": [
 				{
