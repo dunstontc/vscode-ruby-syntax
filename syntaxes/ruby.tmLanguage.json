@@ -225,18 +225,76 @@
             "patterns": [
                 {
                     "begin": "#",
+                    "end": "\\n",
                     "beginCaptures": {
                         "0": {
                             "name": "punctuation.definition.comment.ruby"
                         }
                     },
-                    "end": "\\n",
-                    "name": "comment.line.number-sign.ruby"
+                    "name": "comment.line.number-sign.ruby",
+                    "patterns": [
+                        {
+                            "name": "comment.block.documentation.ruby",
+                            "match": "(?<===\\s)(.+)"
+                        },
+                        {
+                            "captures": {
+                                "1": {
+                                    "name": "punctuation.definition.raw.markdown"
+                                },
+                                "3": {
+                                    "name": "punctuation.definition.raw.markdown"
+                                }
+                            },
+                            "match": "(`+)([^`]|(?!(?<!`)\\1(?!`))`)*+(\\1)",
+                            "name": "markup.inline.raw.string.markdown"
+                        },
+                        {
+                            "begin": "(\\+)",
+                            "end": "(\\+)",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "comment.line.number-sign.ruby"
+                                }
+                            },
+                            "endCaptures": {
+                                "0": {
+                                    "name": "comment.line.number-sign.ruby"
+                                }
+                            },
+                            "name": "markup.inline.raw.string.markdown"
+                        },
+                        {
+                            "begin": "(<tt>)",
+                            "end": "(</tt>)",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "comment.line.number-sign.ruby"
+                                }
+                            },
+                            "endCaptures": {
+                                "0": {
+                                    "name": "comment.line.number-sign.ruby"
+                                }
+                            },
+                            "name": "markup.inline.raw.string.markdown"
+                        }
+                    ]
                 }
             ]
         },
         "constant": {
             "patterns": [
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.constant.ruby"
+                        }
+                    },
+                    "comment": "symbols",
+                    "match": "(?x)\n(?<!:)(:)\n(?>\n  [$a-zA-Z_]\\w*(?>[?!]|=(?![>=]))?\n  |\n  ===?|<=>|>[>=]?|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n  |\n  @@?[a-zA-Z_]\\w*\n)",
+                    "name": "constant.language.symbol.ruby"
+                },
                 {
                     "match": "\\b(nil|true|false)\\b(?![?!])",
                     "name": "constant.language.ruby"
@@ -500,6 +558,10 @@
                     "name": "keyword.operator.other.ruby"
                 },
                 {
+                    "name": "keyword.control.do.ruby",
+                    "match": "(?<!\\.)\\b(do)\\b(?![?!])"
+                },
+                {
                     "comment": "everything being a reserved word, not a value and needing a 'end' is a..",
                     "name": "keyword.control.ruby",
                     "match": "(?<!\\.)\\b(BEGIN|begin|case|class|else|elsif|END|end|ensure|for|if|in|module|rescue|then|unless|until|when|while)\\b(?![?!])"
@@ -525,6 +587,10 @@
                     "comment": " the optional name is just to catch the def also without a method-name",
                     "match": "(?x)\n(?=def\\b)                            # optimization to help Oniguruma fail fast\n(?<=^|\\s)(def)\\b\n(\n  \\s+\n  (\n    (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix\n    (?>                               # method name\n      [a-zA-Z_]\\w*(?>[?!]|=(?!>))?\n      |\n      ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n    )\n  )\n)?",
                     "name": "meta.function.method.without-arguments.ruby"
+                },
+                {
+                    "name": "keyword.control.other.ruby",
+                    "match": "\\b(initializer|namespace)\\b"
                 }
             ]
         },
@@ -840,8 +906,164 @@
                 {
                     "match": "\\b[_A-Z]\\w*\\b",
                     "name": "variable.other.constant.ruby"
+                },
+                {
+                    "begin": "(?<={|{\\s|[^A-Za-z0-9_]do|^do|[^A-Za-z0-9_]do\\s|^do\\s)(\\|)",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.separator.variable.ruby"
+                        }
+                    },
+                    "end": "(?<!\\|)(\\|)(?!\\|)",
+                    "patterns": [
+                        {
+                            "include": "source.ruby"
+                        },
+                        {
+                            "match": "[_a-zA-Z][_a-zA-Z0-9]*",
+                            "name": "variable.other.block.ruby"
+                        },
+                        {
+                            "match": ",",
+                            "name": "punctuation.separator.variable.ruby"
+                        }
+                    ]
                 }
             ]
+        },
+        "yard": {
+            "name": "comment.line.yard.ruby",
+            "patterns": [
+                {
+                    "include": "#yard_comment"
+                },
+                {
+                    "include": "#yard_name_types"
+                },
+                {
+                    "include": "#yard_tag"
+                },
+                {
+                    "include": "#yard_types"
+                },
+                {
+                    "include": "#yard_directive"
+                }
+            ]
+        },
+        "yard_comment": {
+            "comment": "For YARD tags that follow the tag-comment pattern",
+            "match": "(@)(abstract|api|author|deprecated|example|note|overload|since|todo|version)(?=\\s)(.*)$",
+            "captures": {
+                "1": {
+                    "name": "comment.line.keyword.punctuation.yard.ruby"
+                },
+                "2": {
+                    "name": "comment.line.keyword.yard.ruby"
+                },
+                "3": {
+                    "name": "comment.line.string.yard.ruby"
+                }
+            }
+        },
+        "yard_name_types": {
+            "comment": "For YARD tags that follow the tag-name-types-comment pattern",
+            "match": "(@)(attr|attr_reader|attr_writer|option|param|see|yieldparam)(?=\\s)(\\s+([a-z_][a-zA-Z_]*))?(\\s+((\\[).+(])))?(.*)$",
+            "captures": {
+                "1": {
+                    "name": "comment.line.keyword.punctuation.yard.ruby"
+                },
+                "2": {
+                    "name": "comment.line.keyword.yard.ruby"
+                },
+                "3": {
+                    "name": "comment.line.yard.ruby"
+                },
+                "4": {
+                    "name": "comment.line.parameter.yard.ruby"
+                },
+                "5": {
+                    "name": "comment.line.yard.ruby"
+                },
+                "6": {
+                    "name": "comment.line.type.yard.ruby"
+                },
+                "7": {
+                    "name": "comment.line.punctuation.yard.ruby"
+                },
+                "8": {
+                    "name": "comment.line.punctuation.yard.ruby"
+                },
+                "9": {
+                    "name": "comment.line.string.yard.ruby"
+                }
+            }
+        },
+        "yard_tag": {
+            "comment": "For YARD tags that are just the tag",
+            "match": "(@)(private)$",
+            "captures": {
+                "1": {
+                    "name": "comment.line.keyword.punctuation.yard.ruby"
+                },
+                "2": {
+                    "name": "comment.line.keyword.yard.ruby"
+                }
+            }
+        },
+        "yard_types": {
+            "comment": "For YARD tags that follow the tag-types-comment pattern",
+            "match": "(@)(raise|return|yield(?:return)?)(?=\\s)(\\s+((\\[).+(])))?(.*)$",
+            "captures": {
+                "1": {
+                    "name": "comment.line.keyword.punctuation.yard.ruby"
+                },
+                "2": {
+                    "name": "comment.line.keyword.yard.ruby"
+                },
+                "3": {
+                    "name": "comment.line.yard.ruby"
+                },
+                "4": {
+                    "name": "comment.line.type.yard.ruby"
+                },
+                "5": {
+                    "name": "comment.line.punctuation.yard.ruby"
+                },
+                "6": {
+                    "name": "comment.line.punctuation.yard.ruby"
+                },
+                "7": {
+                    "name": "comment.line.string.yard.ruby"
+                }
+            }
+        },
+        "yard_directive": {
+            "comment": "For YARD directives",
+            "match": "(@!)(attribute|endgroup|group|macro|method|parse|scope|visibility)(\\s+((\\[).+(])))?(?=\\s)(.*)$",
+            "captures": {
+                "1": {
+                    "name": "comment.line.keyword.punctuation.yard.ruby"
+                },
+                "2": {
+                    "name": "comment.line.keyword.yard.ruby"
+                },
+                "3": {
+                    "name": "comment.line.yard.ruby"
+                },
+                "4": {
+                    "name": "comment.line.type.yard.ruby"
+                },
+                "5": {
+                    "name": "comment.line.punctuation.yard.ruby"
+                },
+                "6": {
+                    "name": "comment.line.punctuation.yard.ruby"
+                },
+                "7": {
+                    "name": "comment.line.string.yard.ruby"
+                }
+            }
         }
     }
 }

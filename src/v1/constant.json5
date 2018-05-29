@@ -2,6 +2,12 @@
   "repository": {
     "constant": {
       "patterns": [
+        {
+          "captures": {"1": {"name": "punctuation.definition.constant.ruby"}},
+          "comment": "symbols",
+          "match": "(?x)\n(?<!:)(:)\n(?>\n  [$a-zA-Z_]\\w*(?>[?!]|=(?![>=]))?\n  |\n  ===?|<=>|>[>=]?|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n  |\n  @@?[a-zA-Z_]\\w*\n)",
+          "name": "constant.language.symbol.ruby"
+        },
         // {
         //   "name": "constant.other.symbol.hashkey.ruby",
         //   "comment": "symbols as hash key (1.9 syntax)",

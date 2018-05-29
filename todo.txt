@@ -1,3 +1,7 @@
 2018-05-08 Percent Literals.
 2018-05-08 Heredocs.
+2018-05-29 Highlight "|k, v|" as "variable.other.iteration.ruby".
+2018-05-29 yard.
+2018-05-29 rdoc.
+
 

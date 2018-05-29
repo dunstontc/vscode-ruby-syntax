@@ -32,21 +32,25 @@
           "name": "variable.other.constant.ruby",
         },
         // {
-        //   "begin": "(?<={|{\\s|[^A-Za-z0-9_]do|^do|[^A-Za-z0-9_]do\\s|^do\\s)(\\|)",
-        //   "captures": {"1": {"name": "punctuation.separator.variable.ruby"}},
-        //   "end": "(?<!\\|)(\\|)(?!\\|)",
-        //   "patterns": [
-        //     {"include": "source.ruby"},
-        //     {
-        //       "match": "[_a-zA-Z][_a-zA-Z0-9]*",
-        //       "name": "variable.other.block.ruby"
-        //     },
-        //     {
-        //       "match": ",",
-        //       "name": "punctuation.separator.variable.ruby"
-        //     }
-        //   ]
+        //   "match": "(?:|)[_a-zA-Z]()",
+        //   "name": "variable.other.iteration.ruby",
         // },
+        {
+          "begin": "(?<={|{\\s|[^A-Za-z0-9_]do|^do|[^A-Za-z0-9_]do\\s|^do\\s)(\\|)",
+          "captures": {"1": {"name": "punctuation.separator.variable.ruby"}},
+          "end": "(?<!\\|)(\\|)(?!\\|)",
+          "patterns": [
+            {"include": "source.ruby"},
+            {
+              "match": "[_a-zA-Z][_a-zA-Z0-9]*",
+              "name": "variable.other.block.ruby"
+            },
+            {
+              "match": ",",
+              "name": "punctuation.separator.variable.ruby"
+            }
+          ]
+        },
       ]
     }
   }
