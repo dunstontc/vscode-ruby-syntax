@@ -54,6 +54,15 @@
           "name": "keyword.other.special-method.ruby",
           "match": "\\b(initialize|new|loop|include|extend|prepend|fail|raise|attr_reader|attr_writer|attr_accessor|attr|catch|throw|private|private_class_method|module_function|public|public_class_method|protected|refine|using)\\b(?![?!])",
         },
+        {
+          "captures": {
+            "1": {"name": "keyword.control.def.ruby"},
+            "3": {"name": "entity.name.function.ruby"},
+          },
+          "comment": " the optional name is just to catch the def also without a method-name",
+          "match": "(?x)\n(?=def\\b)                            # optimization to help Oniguruma fail fast\n(?<=^|\\s)(def)\\b\n(\n  \\s+\n  (\n    (?>[a-zA-Z_]\\w*(?>\\.|::))?      # method prefix\n    (?>                               # method name\n      [a-zA-Z_]\\w*(?>[?!]|=(?!>))?\n      |\n      ===?|!=|>[>=]?|<=>|<[<=]?|[%&`/\\|]|\\*\\*?|=?~|[-+]@?|\\[]=?\n    )\n  )\n)?",
+          "name": "meta.function.method.without-arguments.ruby"
+        },
       ]
     }
   }

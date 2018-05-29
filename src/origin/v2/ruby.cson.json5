@@ -136,8 +136,7 @@
 			"captures": {"1": {"name": "keyword.other.special-method.ruby"}},
 			"end": "$|(?=#|})",
 			"name": "meta.require.ruby",
-			"patterns": [
-				{"include": "$self"}]
+			"patterns": [{"include": "$self"}]
 		},
 		{
 			"captures": {"1": {"name": "punctuation.definition.variable.ruby"}},

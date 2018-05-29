@@ -9,6 +9,13 @@
           "name": "meta.environment-variable.ruby",
           "patterns": [{"include": "$self"}],
         },
+        {
+          "begin": "\\b(?<!\\.|::)(require|require_relative)\\b(?![?!])",
+          "captures": {"1": {"name": "keyword.other.special-method.ruby"}},
+          "end": "$|(?=#|})",
+          "name": "meta.require.ruby",
+          "patterns": [{"include": "$self"}]
+        },
       ]
     }
   }
