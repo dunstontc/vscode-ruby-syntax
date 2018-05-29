@@ -1,7 +1,28 @@
 {
   "repository": {
     "variable": {
-      "patterns": []
+      "patterns": [
+        {
+          "captures": {"1": {"name": "punctuation.definition.variable.ruby"}},
+          "match": "(@)[a-zA-Z_]\\w*",
+          "name": "variable.other.readwrite.instance.ruby"
+        },
+        {
+          "captures": {"1": {"name": "punctuation.definition.variable.ruby"}},
+          "match": "(@@)[a-zA-Z_]\\w*",
+          "name": "variable.other.readwrite.class.ruby"
+        },
+        {
+          "captures": {"1": {"name": "punctuation.definition.variable.ruby"}},
+          "match": "(\\$)[a-zA-Z_]\\w*",
+          "name": "variable.other.readwrite.global.ruby"
+        },
+        {
+          "captures": {"1": {"name": "punctuation.definition.variable.ruby"}},
+          "match": "(\\$)(!|@|&|`|'|\\+|\\d+|~|=|/|\\\\|,|;|\\.|<|>|_|\\*|\\$|\\?|:|\"|-[0adFiIlpvw])",
+          "name": "variable.other.readwrite.global.pre-defined.ruby"
+        },
+      ]
     }
   }
 }

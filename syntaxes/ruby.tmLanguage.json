@@ -13,6 +13,9 @@
             "include": "#entity"
         },
         {
+            "include": "#invalid"
+        },
+        {
             "include": "#keyword"
         },
         {
@@ -62,6 +65,26 @@
                     "name": "constant.character.escape.ruby"
                 },
                 {
+                    "match": "\\b\\d(?>_?\\d)*(?=\\.\\d|[eE])(\\.\\d(?>_?\\d)*)?([eE][-+]?\\d(?>_?\\d)*)?r?i?\\b",
+                    "name": "constant.numeric.float.ruby"
+                },
+                {
+                    "match": "\\b(0|(0[dD]\\d|[1-9])(?>_?\\d)*)r?i?\\b",
+                    "name": "constant.numeric.integer.ruby"
+                },
+                {
+                    "match": "\\b0[xX]\\h(?>_?\\h)*r?i?\\b",
+                    "name": "constant.numeric.hex.ruby"
+                },
+                {
+                    "match": "\\b0[bB][01](?>_?[01])*r?i?\\b",
+                    "name": "constant.numeric.binary.ruby"
+                },
+                {
+                    "match": "\\b0([oO]?[0-7](?>_?[0-7])*)?r?i?\\b",
+                    "name": "constant.numeric.octal.ruby"
+                },
+                {
                     "comment": "\n\t\t\tmatches questionmark-letters. texamples (1st alternation = hex): ?\\x1     ?\\x61n examples (2nd alternation = octal):\\0      ?\\07     ?\\017          examples (3rd alternation = escaped):        ?\\n      ?\\b          examples (4th alternation = meta-ctrl):        ?\\C-a    ?\\M-a    ?\\C-\\M-\\C-\\M-a          examples (4th alternation = normal):        ?a       ?A       ?0         ?*       ?\"       ?(         ?.       ?#                       the negative lookbehind prevents against matching       tp(42.tainted?)",
                     "match": "(?<!\\w)\\?(\\\\(x\\h{1,2}(?!\\h)\\b|0[0-7]{0,2}(?![0-7])\\b|[^x0MC])|(\\\\[MC]-)+\\w|[^\\s\\\\])",
                     "name": "constant.numeric.ruby"
@@ -70,6 +93,15 @@
         },
         "entity": {
             "patterns": []
+        },
+        "invalid": {
+            "patterns": [
+                {
+                    "comment": "else if is a common mistake carried over from other languages. it works if you put in a second end, but it’s never what you want.",
+                    "match": "(?<!\\.)\\belse(\\s)+if\\b",
+                    "name": "invalid.deprecated.ruby"
+                }
+            ]
         },
         "keyword": {
             "patterns": [
@@ -231,7 +263,44 @@
             ]
         },
         "variable": {
-            "patterns": []
+            "patterns": [
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.variable.ruby"
+                        }
+                    },
+                    "match": "(@)[a-zA-Z_]\\w*",
+                    "name": "variable.other.readwrite.instance.ruby"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.variable.ruby"
+                        }
+                    },
+                    "match": "(@@)[a-zA-Z_]\\w*",
+                    "name": "variable.other.readwrite.class.ruby"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.variable.ruby"
+                        }
+                    },
+                    "match": "(\\$)[a-zA-Z_]\\w*",
+                    "name": "variable.other.readwrite.global.ruby"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.variable.ruby"
+                        }
+                    },
+                    "match": "(\\$)(!|@|&|`|'|\\+|\\d+|~|=|/|\\\\|,|;|\\.|<|>|_|\\*|\\$|\\?|:|\"|-[0adFiIlpvw])",
+                    "name": "variable.other.readwrite.global.pre-defined.ruby"
+                }
+            ]
         }
     }
 }
