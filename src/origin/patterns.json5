@@ -324,11 +324,7 @@
     },
     {
       "begin": "^__END__\\n",
-      "captures": {
-        "0": {
-          "name": "string.unquoted.program-block.ruby"
-        }
-      },
+      "captures": {"0": {"name": "string.unquoted.program-block.ruby"}},
       "comment": "__END__ marker",
       "contentName": "text.plain",
       "end": "(?=not)impossible",
@@ -338,9 +334,7 @@
           "end": "(?=not)impossible",
           "name": "text.html.embedded.ruby",
           "patterns": [
-            {
-              "include": "text.html.basic"
-            }
+            {"include": "text.html.basic"}
           ]
         }
       ]
@@ -352,51 +346,27 @@
       "endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
       "name": "string.unquoted.heredoc.ruby",
       "patterns": [
-        {
-          "include": "#heredoc"
-        },
-        {
-          "include": "#interpolated_ruby"
-        },
-        {
-          "include": "#escaped_char"
-        }
+        {"include": "#heredoc"},
+        {"include": "#interpolated_ruby"},
+        {"include": "#escaped_char"}
       ]
     },
     {
       "begin": "(?><<[-~](\\w+))",
-      "beginCaptures": {
-        "0": {
-          "name": "punctuation.definition.string.begin.ruby"
-        }
-      },
+      "beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
       "comment": "heredoc with indented terminator",
       "end": "\\s*\\1$",
-      "endCaptures": {
-        "0": {
-          "name": "punctuation.definition.string.end.ruby"
-        }
-      },
+      "endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
       "name": "string.unquoted.heredoc.ruby",
       "patterns": [
-        {
-          "include": "#heredoc"
-        },
-        {
-          "include": "#interpolated_ruby"
-        },
-        {
-          "include": "#escaped_char"
-        }
+        {"include": "#heredoc"},
+        {"include": "#interpolated_ruby"},
+        {"include": "#escaped_char"}
       ]
     },
     {
       "begin": "(?<=\\{|do|\\{\\s|do\\s)(\\|)",
-      "captures": {
-        "1": {
-          "name": "punctuation.separator.arguments.ruby"
-        }
-      },
+      "captures": {"1": {"name": "punctuation.separator.arguments.ruby"}},
       "end": "(?<!\\|)(\\|)(?!\\|)",
       "patterns": [
         {
@@ -413,29 +383,17 @@
       ]
     },
     {
-      "captures": {
-        "1": {
-          "name": "punctuation.separator.method.ruby"
-        }
-      },
+      "captures": {"1": {"name": "punctuation.separator.method.ruby"}},
       "comment": "Safe navigation operator - Added in 2.3",
       "match": "(&\\.)\\s*(?![A-Z])"
     },
     {
-      "captures": {
-        "1": {
-          "name": "punctuation.separator.namespace.ruby"
-        }
-      },
+      "captures": {"1": {"name": "punctuation.separator.namespace.ruby"}},
       "comment": "Mark as namespace separator if double colons followed by capital letter",
       "match": "(::)\\s*(?=[A-Z])"
     },
     {
-      "captures": {
-        "1": {
-          "name": "punctuation.separator.method.ruby"
-        }
-      },
+      "captures": {"1": {"name": "punctuation.separator.method.ruby"}},
       "comment": "Mark as method separator if double colons not followed by capital letter",
       "match": "(\\.|::)\\s*(?![A-Z])"
     },

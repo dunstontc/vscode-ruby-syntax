@@ -44,6 +44,183 @@
         }
     ],
     "repository": {
+        "escaped_char": {
+            "patterns": [
+                {
+                    "match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
+                    "name": "constant.character.escape.ruby"
+                }
+            ]
+        },
+        "interpolated_ruby": {
+            "patterns": [
+                {
+                    "begin": "#\\{",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.section.embedded.begin.ruby"
+                        }
+                    },
+                    "contentName": "source.ruby",
+                    "end": "(\\})",
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.section.embedded.end.ruby"
+                        },
+                        "1": {
+                            "name": "source.ruby"
+                        }
+                    },
+                    "name": "meta.embedded.line.ruby",
+                    "patterns": [
+                        {
+                            "include": "#nest_curly_and_self"
+                        },
+                        {
+                            "include": "$self"
+                        }
+                    ],
+                    "repository": {
+                        "nest_curly_and_self": {
+                            "patterns": [
+                                {
+                                    "begin": "\\{",
+                                    "captures": {
+                                        "0": {
+                                            "name": "punctuation.section.scope.ruby"
+                                        }
+                                    },
+                                    "end": "\\}",
+                                    "patterns": [
+                                        {
+                                            "include": "#nest_curly_and_self"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "include": "$self"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.variable.ruby"
+                        }
+                    },
+                    "match": "(#@)[a-zA-Z_]\\w*",
+                    "name": "variable.other.readwrite.instance.ruby"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.variable.ruby"
+                        }
+                    },
+                    "match": "(#@@)[a-zA-Z_]\\w*",
+                    "name": "variable.other.readwrite.class.ruby"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.variable.ruby"
+                        }
+                    },
+                    "match": "(#\\$)[a-zA-Z_]\\w*",
+                    "name": "variable.other.readwrite.global.ruby"
+                }
+            ]
+        },
+        "regex_sub": {
+            "patterns": [
+                {
+                    "include": "#interpolated_ruby"
+                },
+                {
+                    "include": "#escaped_char"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.quantifier.begin.ruby"
+                        },
+                        "3": {
+                            "name": "punctuation.definition.quantifier.end.ruby"
+                        }
+                    },
+                    "match": "(\\{)\\d+(,\\d+)?(\\})",
+                    "name": "keyword.operator.quantifier.ruby"
+                },
+                {
+                    "name": "constant.other.character-class.set.ruby",
+                    "begin": "\\[\\^?",
+                    "end": "\\]",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.character-class.begin.ruby"
+                        }
+                    },
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.character-class.end.ruby"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#escaped_char"
+                        }
+                    ]
+                },
+                {
+                    "name": "comment.line.number-sign.ruby",
+                    "begin": "\\(\\?#",
+                    "end": "\\)",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.begin.ruby"
+                        }
+                    },
+                    "endCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.end.ruby"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#escaped_char"
+                        }
+                    ]
+                },
+                {
+                    "name": "meta.group.regexp.ruby",
+                    "begin": "\\(",
+                    "end": "\\)",
+                    "captures": {
+                        "0": {
+                            "name": "punctuation.definition.group.ruby"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#regex_sub"
+                        }
+                    ]
+                },
+                {
+                    "name": "comment.line.number-sign.ruby",
+                    "comment": "We are restrictive in what we allow to go after the comment character to avoid false positives, since the availability of comments depend on regexp flags.",
+                    "begin": "(?<=^|\\s)(#)\\s(?=[[a-zA-Z0-9,. \\t?!-][^\\x{00}-\\x{7F}]]*$)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.comment.ruby"
+                        }
+                    },
+                    "end": "$\\n?"
+                }
+            ]
+        },
         "comment": {
             "patterns": [
                 {
@@ -60,10 +237,6 @@
         },
         "constant": {
             "patterns": [
-                {
-                    "match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
-                    "name": "constant.character.escape.ruby"
-                },
                 {
                     "match": "\\b\\d(?>_?\\d)*(?=\\.\\d|[eE])(\\.\\d(?>_?\\d)*)?([eE][-+]?\\d(?>_?\\d)*)?r?i?\\b",
                     "name": "constant.numeric.float.ruby"
@@ -180,6 +353,9 @@
                         {
                             "match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
                             "name": "constant.character.escape.ruby"
+                        },
+                        {
+                            "include": "#interpolated_ruby"
                         }
                     ]
                 },
@@ -191,6 +367,9 @@
                         {
                             "match": "\\\\(?:[0-7]{1,3}|x[\\da-fA-F]{1,2}|.)",
                             "name": "constant.character.escape.ruby"
+                        },
+                        {
+                            "include": "#interpolated_ruby"
                         }
                     ]
                 }

@@ -1,7 +1,7 @@
 {
     "name": "vscode-ruby-syntax",
     "displayName": "vscode-ruby-syntax",
-    "description": "Syntax highlighting for Ruby.",
+    "description": "Syntax highlighting for Ruby. (WIP)",
     "version": "0.0.1",
     "publisher": "dunstontc",
     "repository": {

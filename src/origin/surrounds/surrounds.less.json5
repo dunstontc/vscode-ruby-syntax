@@ -2,77 +2,45 @@
   "repository": {
     "angles": {
       "patterns": [
-        {
-          "include": "#escaped_char"
-        },
-        {
-          "include": "#interpolated_ruby"
-        },
+        {"include": "#escaped_char"},
+        {"include": "#interpolated_ruby"},
         {
           "begin": "<",
           "end": ">",
-          "patterns": [
-            {
-              "include": "#angles"
-            }
-          ]
+          "patterns": [{"include": "#angles"}]
         }
       ]
     },
     "braces": {
       "patterns": [
-        {
-          "include": "#escaped_char"
-        },
-        {
-          "include": "#interpolated_ruby"
-        },
+        {"include": "#escaped_char"},
+        {"include": "#interpolated_ruby"},
         {
           "begin": "\\{",
           "end": "\\}",
-          "patterns": [
-            {
-              "include": "#braces"
-            }
-          ]
+          "patterns": [{"include": "#braces"}]
         }
       ]
     },
     "brackets": {
       "patterns": [
-        {
-          "include": "#escaped_char"
-        },
-        {
-          "include": "#interpolated_ruby"
-        },
+        {"include": "#escaped_char"},
+        {"include": "#interpolated_ruby"},
         {
           "begin": "\\[",
           "end": "\\]",
-          "patterns": [
-            {
-              "include": "#brackets"
-            }
-          ]
+          "patterns": [{"include": "#brackets"}],
         }
       ]
     },
     "parens": {
       "patterns": [
-        {
-          "include": "#escaped_char"
-        },
-        {
-          "include": "#interpolated_ruby"
-        },
+        {"include": "#escaped_char"},
+        {"include": "#interpolated_ruby"},
         {
           "begin": "\\(",
           "end": "\\)",
-          "patterns": [
-            {
-              "include": "#parens"
-            }
-          ]
+          "patterns": [{"include": "#parens"}]
         }
       ]
     }

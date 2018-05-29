@@ -3,11 +3,7 @@
     "heredoc": {
 			"begin": "^<<[-~]?\\w+",
 			"end": "$",
-			"patterns": [
-				{
-					"include": "$self"
-				}
-			]
+			"patterns": [{"include": "$self"}]
 		},
   }
 }

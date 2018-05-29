@@ -3,29 +3,17 @@
     "angles": {
       "patterns": [
         {
-          "captures": {
-            "0": {
-              "name": "constant.character.escape.ruby"
-            }
-          },
+          "name": "string.other.ruby",
           "match": "\\\\<|\\\\>",
-          "name": "string.other.ruby"
+          "captures": {"0": {"name": "constant.character.escape.ruby"}},
         },
         {
           "begin": "<",
-          "captures": {
-            "0": {
-              "name": "string.other.ruby"
-            }
-          },
           "end": ">",
+          "captures": {"0": {"name": "string.other.ruby"}},
           "patterns": [
-            {
-              "include": "#angles"
-            },
-            {
-              "include": "#string"
-            }
+            {"include": "#angles"},
+            {"include": "#string"}
           ]
         }
       ]
@@ -33,29 +21,17 @@
     "braces": {
       "patterns": [
         {
-          "captures": {
-            "0": {
-              "name": "constant.character.escape.ruby"
-            }
-          },
+          "name": "string.other.ruby",
           "match": "\\\\\\{|\\\\\\}",
-          "name": "string.other.ruby"
+          "captures": {"0": {"name": "constant.character.escape.ruby"}},
         },
         {
           "begin": "\\{",
-          "captures": {
-            "0": {
-              "name": "string.other.ruby"
-            }
-          },
           "end": "\\}",
+          "captures": {"0": {"name": "string.other.ruby"}},
           "patterns": [
-            {
-              "include": "#braces"
-            },
-            {
-              "include": "#string"
-            }
+            {"include": "#braces"},
+            {"include": "#string"}
           ]
         }
       ]
@@ -63,29 +39,17 @@
     "brackets": {
       "patterns": [
         {
-          "captures": {
-            "0": {
-              "name": "constant.character.escape.ruby"
-            }
-          },
+          "name": "string.other.ruby",
           "match": "\\\\\\[|\\\\\\]",
-          "name": "string.other.ruby"
+          "captures": {"0": {"name": "constant.character.escape.ruby"}},
         },
         {
           "begin": "\\[",
-          "captures": {
-            "0": {
-              "name": "string.other.ruby"
-            }
-          },
           "end": "\\]",
+          "captures": {"0": {"name": "string.other.ruby"}},
           "patterns": [
-            {
-              "include": "#brackets"
-            },
-            {
-              "include": "#string"
-            }
+            {"include": "#brackets"},
+            {"include": "#string"}
           ]
         }
       ]
@@ -93,29 +57,17 @@
     "parens": {
       "patterns": [
         {
-          "captures": {
-            "0": {
-              "name": "constant.character.escape.ruby"
-            }
-          },
+          "name": "string.other.ruby",
           "match": "\\\\\\(|\\\\\\)",
-          "name": "string.other.ruby"
+          "captures": {"0": {"name": "constant.character.escape.ruby"}},
         },
         {
           "begin": "\\(",
-          "captures": {
-            "0": {
-              "name": "string.other.ruby"
-            }
-          },
           "end": "\\)",
+          "captures": {"0": {"name": "string.other.ruby"}},
           "patterns": [
-            {
-              "include": "#parens"
-            },
-            {
-              "include": "#string"
-            }
+            {"include": "#parens"},
+            {"include": "#string"}
           ]
         }
       ]
@@ -123,17 +75,13 @@
     "string": {
       "patterns": [
         {
-          "captures": {
-            "0": {
-              "name": "constant.character.escape.ruby"
-            }
-          },
+          "name": "string.other.ruby",
           "match": "\\\\\\\\|\\\\[ ]",
-          "name": "string.other.ruby"
+          "captures": {"0": {"name": "constant.character.escape.ruby"}},
         },
         {
           "match": "\\S\\w*",
-          "name": "string.other.ruby"
+          "name": "string.other.ruby",
         }
       ]
     }

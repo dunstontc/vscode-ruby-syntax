@@ -4,19 +4,11 @@
       "patterns": [
         {
           "begin": "<",
-          "captures": {
-            "0": {
-              "name": "string.other.ruby"
-            }
-          },
           "end": ">",
+          "captures": {"0": {"name": "string.other.ruby"}},
           "patterns": [
-            {
-              "include": "#angles"
-            },
-            {
-              "include": "#string"
-            }
+            {"include": "#angles"},
+            {"include": "#string"}
           ]
         }
       ]
@@ -25,19 +17,11 @@
       "patterns": [
         {
           "begin": "\\{",
-          "captures": {
-            "0": {
-              "name": "string.other.ruby"
-            }
-          },
           "end": "\\}",
+          "captures": {"0": {"name": "string.other.ruby"}},
           "patterns": [
-            {
-              "include": "#braces"
-            },
-            {
-              "include": "#string"
-            }
+            {"include": "#braces"},
+            {"include": "#string"}
           ]
         }
       ]
@@ -46,19 +30,11 @@
       "patterns": [
         {
           "begin": "\\[",
-          "captures": {
-            "0": {
-              "name": "string.other.ruby"
-            }
-          },
           "end": "\\]",
+          "captures": {"0": {"name": "string.other.ruby"}},
           "patterns": [
-            {
-              "include": "#brackets"
-            },
-            {
-              "include": "#string"
-            }
+            {"include": "#brackets"},
+            {"include": "#string"}
           ]
         }
       ]
@@ -67,19 +43,11 @@
       "patterns": [
         {
           "begin": "\\(",
-          "captures": {
-            "0": {
-              "name": "string.other.ruby"
-            }
-          },
+          "captures": {"0": {"name": "string.other.ruby"}},
           "end": "\\)",
           "patterns": [
-            {
-              "include": "#parens"
-            },
-            {
-              "include": "#string"
-            }
+            {"include": "#parens"},
+            {"include": "#string"}
           ]
         }
       ]
@@ -91,12 +59,8 @@
           "end": "(?!\\G)",
           "name": "string.other.ruby",
           "patterns": [
-            {
-              "include": "#escaped_char"
-            },
-            {
-              "include": "#interpolated_ruby"
-            }
+            {"include": "#escaped_char"},
+            {"include": "#interpolated_ruby"}
           ]
         },
         {

@@ -2,65 +2,41 @@
   "repository": {
     "angles": {
       "patterns": [
-        {
-          "include": "#regex_sub"
-        },
+        {"include": "#regex_sub"},
         {
           "begin": "<",
           "end": ">",
-          "patterns": [
-            {
-              "include": "#angles"
-            }
-          ]
+          "patterns": [{"include": "#angles"}]
         }
       ]
     },
     "braces": {
       "patterns": [
-        {
-          "include": "#regex_sub"
-        },
+        {"include": "#regex_sub"},
         {
           "begin": "\\{",
           "end": "\\}",
-          "patterns": [
-            {
-              "include": "#braces"
-            }
-          ]
+          "patterns": [{"include": "#braces"}]
         }
       ]
     },
     "brackets": {
       "patterns": [
-        {
-          "include": "#regex_sub"
-        },
+        {"include": "#regex_sub"},
         {
           "begin": "\\[",
           "end": "\\]",
-          "patterns": [
-            {
-              "include": "#brackets"
-            }
-          ]
+          "patterns": [{"include": "#brackets"}]
         }
       ]
     },
     "parens": {
       "patterns": [
-        {
-          "include": "#regex_sub"
-        },
+        {"include": "#regex_sub"},
         {
           "begin": "\\(",
           "end": "\\)",
-          "patterns": [
-            {
-              "include": "#parens"
-            }
-          ]
+          "patterns": [{"include": "#parens"}]
         }
       ]
     }

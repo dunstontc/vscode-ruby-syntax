@@ -1,6 +1,8 @@
 # Ruby 
 [![GitHub issues](https://img.shields.io/github/issues/dunstontc/vscode-ruby-syntax.svg)](https://github.com/dunstontc/vscode-ruby-syntax/issues)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dunstontc/vscode-ruby-syntax/blob/master/LICENSE) 
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/dunstontc.vscode-ruby-syntax.svg?style=flat&color=blue)](https://marketplace.visualstudio.com/items?itemName=dunstontc.vscode-ruby-syntax)
+<!-- [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/dunstontc.vscode-ruby-syntax.svg?style=flat&color=blue)](https://marketplace.visualstudio.com/items?itemName=dunstontc.vscode-ruby-syntax) -->
 
 ## Resources:
 - [ruby-lang.com](https://www.ruby-lang.org/en/)
@@ -14,10 +16,6 @@
   - https://apidock.com/ruby/Kernel/sprintf
   - http://ruby-doc.org/core-2.0.0/Kernel.html#method-i-sprintf
 
-
-## Differences from the builtin syntax support
-- Autoatically highlights:
-  - Vagrantfile
 
 ## [License](https://github.com/dunstontc/vscode-ruby-syntax/blob/master/LICENSE)
 

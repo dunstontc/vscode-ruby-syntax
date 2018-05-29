@@ -9,11 +9,7 @@
         {
           "begin": "<",
           "end": ">",
-          "patterns": [
-            {
-              "include": "#angles"
-            }
-          ]
+          "patterns": [{"include": "#angles"}],
         }
       ]
     },
@@ -26,11 +22,7 @@
         {
           "begin": "\\{",
           "end": "\\}",
-          "patterns": [
-            {
-              "include": "#braces"
-            }
-          ]
+          "patterns": [{"include": "#braces"}],
         }
       ]
     },
@@ -43,11 +35,7 @@
         {
           "begin": "\\[",
           "end": "\\]",
-          "patterns": [
-            {
-              "include": "#brackets"
-            }
-          ]
+          "patterns": [{"include": "#brackets"}]
         }
       ]
     },
@@ -60,11 +48,7 @@
         {
           "begin": "\\(",
           "end": "\\)",
-          "patterns": [
-            {
-              "include": "#parens"
-            }
-          ]
+          "patterns": [{"include": "#parens"}],
         }
       ]
     }

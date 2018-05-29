@@ -6,32 +6,16 @@
   "patterns": [
     {
       "begin": "(?><<[-~](\"?)((?:[_\\w]+_|)CPP)\\b\\1)",
-      "beginCaptures": {
-        "0": {
-          "name": "punctuation.definition.string.begin.ruby"
-        }
-      },
+      "beginCaptures": {"0": {"name": "punctuation.definition.string.begin.ruby"}},
       "contentName": "source.c++",
       "end": "\\s*\\2$\\n?",
-      "endCaptures": {
-        "0": {
-          "name": "punctuation.definition.string.end.ruby"
-        }
-      },
+      "endCaptures": {"0": {"name": "punctuation.definition.string.end.ruby"}},
       "name": "string.unquoted.heredoc.ruby",
       "patterns": [
-        {
-          "include": "#heredoc"
-        },
-        {
-          "include": "#interpolated_ruby"
-        },
-        {
-          "include": "source.c++"
-        },
-        {
-          "include": "#escaped_char"
-        }
+        {"include": "#heredoc"},
+        {"include": "#interpolated_ruby"},
+        {"include": "source.c++"},
+        {"include": "#escaped_char"}
       ]
     }
   ]

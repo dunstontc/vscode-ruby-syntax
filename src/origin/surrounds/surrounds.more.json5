@@ -4,19 +4,11 @@
       "patterns": [
         {
           "begin": "<",
-          "captures": {
-            "0": {
-              "name": "constant.other.symbol.ruby"
-            }
-          },
           "end": ">",
+          "captures": {"0": {"name": "constant.other.symbol.ruby"}},
           "patterns": [
-            {
-              "include": "#angles"
-            },
-            {
-              "include": "#symbol"
-            }
+            {"include": "#angles"},
+            {"include": "#symbol"}
           ]
         }
       ]
@@ -25,19 +17,11 @@
       "patterns": [
         {
           "begin": "\\{",
-          "captures": {
-            "0": {
-              "name": "constant.other.symbol.ruby"
-            }
-          },
           "end": "\\}",
+          "captures": {"0": {"name": "constant.other.symbol.ruby"}},
           "patterns": [
-            {
-              "include": "#braces"
-            },
-            {
-              "include": "#symbol"
-            }
+            {"include": "#braces"},
+            {"include": "#symbol"}
           ]
         }
       ]
@@ -46,19 +30,11 @@
       "patterns": [
         {
           "begin": "\\[",
-          "captures": {
-            "0": {
-              "name": "constant.other.symbol.ruby"
-            }
-          },
           "end": "\\]",
+          "captures": {"0": {"name": "constant.other.symbol.ruby"}},
           "patterns": [
-            {
-              "include": "#brackets"
-            },
-            {
-              "include": "#symbol"
-            }
+            {"include": "#brackets"},
+            {"include": "#symbol"}
           ]
         }
       ]
@@ -67,19 +43,11 @@
       "patterns": [
         {
           "begin": "\\(",
-          "captures": {
-            "0": {
-              "name": "constant.other.symbol.ruby"
-            }
-          },
           "end": "\\)",
+          "captures": {"0": {"name": "constant.other.symbol.ruby"}},
           "patterns": [
-            {
-              "include": "#parens"
-            },
-            {
-              "include": "#symbol"
-            }
+            {"include": "#parens"},
+            {"include": "#symbol"}
           ]
         }
       ]
@@ -91,17 +59,13 @@
           "end": "(?!\\G)",
           "name": "constant.other.symbol.ruby",
           "patterns": [
-            {
-              "include": "#escaped_char"
-            },
-            {
-              "include": "#interpolated_ruby"
-            }
+            {"include": "#escaped_char"},
+            {"include": "#interpolated_ruby"}
           ]
         },
         {
           "match": "\\S\\w*",
-          "name": "constant.other.symbol.ruby"
+          "name": "constant.other.symbol.ruby",
         }
       ]
     }
