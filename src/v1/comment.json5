@@ -9,7 +9,7 @@
           "name": "comment.line.number-sign.ruby",
           "patterns": [
             {
-              "name": "comment.block.documentation.ruby",
+              "name": "entity.name.section.markdown",
               "match": "(?<===\\s)(.+)",
             },
             {
