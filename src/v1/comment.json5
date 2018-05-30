@@ -22,7 +22,7 @@
             },
             {
               "begin": "(\\+)",
-              "end": "(\\+)",
+              "end": "(\\+|\\n)",
               "beginCaptures": {"0": {"name": "comment.line.number-sign.ruby"}},
               "endCaptures": {"0": {"name": "comment.line.number-sign.ruby"}},
               "name": "markup.inline.raw.string.markdown",
